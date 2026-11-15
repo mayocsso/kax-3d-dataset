@@ -1,0 +1,1387 @@
+{
+  "schema": "hsrd_head.qa_report/1",
+  "pose_id": "HSR0102-Body-048",
+  "person_id": "HSR0102",
+  "created_at": "2026-11-11T06:05:45+00:00",
+  "pipeline_version": "0.1.0",
+  "overall_passed": true,
+  "checks": [
+    {
+      "id": "image_count",
+      "description": "images 폴더에 최종 이미지가 정확히 15개(다른 파일 없음)",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "present": [
+          "az000_el00.png",
+          "az000_el30.png",
+          "az000_el60.png",
+          "az072_el00.png",
+          "az072_el30.png",
+          "az072_el60.png",
+          "az144_el00.png",
+          "az144_el30.png",
+          "az144_el60.png",
+          "az216_el00.png",
+          "az216_el30.png",
+          "az216_el60.png",
+          "az288_el00.png",
+          "az288_el30.png",
+          "az288_el60.png"
+        ]
+      }
+    },
+    {
+      "id": "image_format",
+      "description": "모든 이미지가 1200×1600, PNG, RGB",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "az000_el00": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az072_el00": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az144_el00": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az216_el00": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az288_el00": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az000_el30": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az072_el30": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az144_el30": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az216_el30": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az288_el30": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az000_el60": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az072_el60": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az144_el60": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az216_el60": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        },
+        "az288_el60": {
+          "size": [
+            1200,
+            1600
+          ],
+          "mode": "RGB",
+          "format": "PNG"
+        }
+      }
+    },
+    {
+      "id": "viewpoints",
+      "description": "15개 시점이 규격 조합과 일치하고 중복 없이 같은 거리에서 머리 중심을 바라봄(roll 없음)",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "angle_combinations_match": true,
+        "position_formula_max_error": 0.0,
+        "distance_min": 0.989061590767689,
+        "distance_max": 0.9890615907676892,
+        "closest_pair_distance": 0.5119759529401469,
+        "target_to_principal_point_max_px": 2.2737367544323206e-13,
+        "roll_max_abs_right_axis_z": 0.0,
+        "all_up_axes_point_up": true
+      }
+    },
+    {
+      "id": "matrix_consistency",
+      "description": "c2w·w2c 가 서로 역행렬이고 회전이 정규직교(det=+1), Blender↔OpenCV 관계가 맞음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "inverse_max_error": 4.440892098500626e-16,
+        "orthonormality_max_error": 4.440892098500626e-16,
+        "min_determinant": 0.9999999999999999,
+        "blender_opencv_relation_max_error": 0.0
+      }
+    },
+    {
+      "id": "blender_camera_matches_stored",
+      "description": "저장한 외부·내부 파라미터가 Blender 카메라의 실제 값과 일치",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "matrix_world_max_abs_diff": 1.4634554929005006e-07,
+        "K_max_abs_diff_px": 3.608801989685162e-06,
+        "same_intrinsics_all_frames": true,
+        "plain_pinhole_settings": true,
+        "note": "Blender 는 행렬을 float32 로 보관하므로 1e-7 수준의 차이는 정상"
+      }
+    },
+    {
+      "id": "projection_vs_blender_api",
+      "description": "알려진 3D 점을 저장한 K·w2c 로 투영한 값이 Blender world_to_camera_view 와 일치",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "points": 16,
+        "max_pixel_error": 0.0002740549833788464,
+        "max_depth_error": 1.1329091553768933e-07
+      }
+    },
+    {
+      "id": "projection_vs_rendered_markers",
+      "description": "알려진 3D 위치의 표식을 실제로 렌더링해 찾은 픽셀 위치가 저장한 K·w2c 의 투영과 일치",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "max_error_px": 0.023014085767108675,
+        "rms_error_px": 0.01071033085699492,
+        "measurements": 101,
+        "per_view": {
+          "az000_el00": {
+            "markers_measured": 7,
+            "max_error_px": 0.019712463319917866
+          },
+          "az072_el00": {
+            "markers_measured": 7,
+            "max_error_px": 0.01855109073513005
+          },
+          "az144_el00": {
+            "markers_measured": 7,
+            "max_error_px": 0.015064275318511493
+          },
+          "az216_el00": {
+            "markers_measured": 7,
+            "max_error_px": 0.023014085767108675
+          },
+          "az288_el00": {
+            "markers_measured": 7,
+            "max_error_px": 0.01399884848580406
+          },
+          "az000_el30": {
+            "markers_measured": 7,
+            "max_error_px": 0.013319852302441943
+          },
+          "az072_el30": {
+            "markers_measured": 7,
+            "max_error_px": 0.013064850921180732
+          },
+          "az144_el30": {
+            "markers_measured": 7,
+            "max_error_px": 0.01768756081844066
+          },
+          "az216_el30": {
+            "markers_measured": 5,
+            "max_error_px": 0.014969011929370285
+          },
+          "az288_el30": {
+            "markers_measured": 7,
+            "max_error_px": 0.014410624593484692
+          },
+          "az000_el60": {
+            "markers_measured": 7,
+            "max_error_px": 0.019252559466040493
+          },
+          "az072_el60": {
+            "markers_measured": 7,
+            "max_error_px": 0.01350100969117146
+          },
+          "az144_el60": {
+            "markers_measured": 7,
+            "max_error_px": 0.018477661968504467
+          },
+          "az216_el60": {
+            "markers_measured": 5,
+            "max_error_px": 0.01603922839856366
+          },
+          "az288_el60": {
+            "markers_measured": 7,
+            "max_error_px": 0.01769740228476292
+          }
+        },
+        "marker_radius": 0.005934369544606135,
+        "marker_positions_aligned": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0825,
+            0.010725,
+            0.017325
+          ],
+          [
+            0.014025000000000001,
+            0.0825,
+            -0.023925
+          ],
+          [
+            -0.018975000000000002,
+            0.025575,
+            0.0825
+          ],
+          [
+            -0.058575,
+            -0.05115,
+            -0.04372500000000001
+          ],
+          [
+            0.045375000000000006,
+            -0.066,
+            0.038775
+          ],
+          [
+            -0.0495,
+            0.037125000000000005,
+            -0.061875
+          ]
+        ]
+      }
+    },
+    {
+      "id": "texture_connected",
+      "description": "제공된 색 텍스처가 (텍스처가 배포된) 모든 면에 연결되어 컬러로 렌더링됨(회색 메시 아님)",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "materials": [
+          {
+            "material": "HSR0102-Body-048_LOD0_u0_v0",
+            "texture_path": "data/extracted/HSR0102/HSR0102-Body-048/Scan-LOD0/HSR0102-Body-048_LOD0_u0_v0_diffuse.png",
+            "colorspace": "sRGB",
+            "link_rule": "파일명 규칙으로 연결",
+            "faces": 1000004,
+            "uv_layer": "UVMap",
+            "shader": "Diffuse BSDF"
+          }
+        ],
+        "faces_total": 1000004,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "faces_without_distributed_texture": 0,
+        "mean_chroma_of_foreground_per_view": {
+          "az000_el00": 57.028119113528035,
+          "az072_el00": 50.756003157977354,
+          "az144_el00": 32.876287547171195,
+          "az216_el00": 35.16217191189387,
+          "az288_el00": 39.22745916787013,
+          "az000_el30": 48.82524226099794,
+          "az072_el30": 46.88200994862368,
+          "az144_el30": 29.056546572455144,
+          "az216_el30": 32.152338288028375,
+          "az288_el30": 37.78766479230149,
+          "az000_el60": 42.40231789707632,
+          "az072_el60": 39.638203975968345,
+          "az144_el60": 23.160164586780162,
+          "az216_el60": 22.167060759321352,
+          "az288_el60": 31.7976499973724
+        },
+        "note": "chroma = 전경 픽셀의 (max-min) RGB 평균. 무채색 렌더면 0 에 가깝다."
+      }
+    },
+    {
+      "id": "not_blank_or_black",
+      "description": "빈 화면·검은 화면·과다 노출이 없음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "az000_el00": {
+          "foreground_fraction": 0.3179739583333333,
+          "foreground_mean_value": 99.02123088346902,
+          "pure_black_fraction": 3.6458333333333333e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az072_el00": {
+          "foreground_fraction": 0.3384286458333333,
+          "foreground_mean_value": 90.70371852346604,
+          "pure_black_fraction": 3.6458333333333333e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az144_el00": {
+          "foreground_fraction": 0.28472864583333335,
+          "foreground_mean_value": 60.42117830268464,
+          "pure_black_fraction": 1.0416666666666667e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az216_el00": {
+          "foreground_fraction": 0.36527916666666665,
+          "foreground_mean_value": 64.07172453716906,
+          "pure_black_fraction": 5.208333333333334e-07,
+          "pure_white_fraction": 0.0
+        },
+        "az288_el00": {
+          "foreground_fraction": 0.2888796875,
+          "foreground_mean_value": 69.80611702175611,
+          "pure_black_fraction": 2.0833333333333334e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az000_el30": {
+          "foreground_fraction": 0.2984578125,
+          "foreground_mean_value": 91.84386461189087,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        },
+        "az072_el30": {
+          "foreground_fraction": 0.2997692708333333,
+          "foreground_mean_value": 86.32636848594781,
+          "pure_black_fraction": 4.166666666666667e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az144_el30": {
+          "foreground_fraction": 0.23845572916666666,
+          "foreground_mean_value": 56.56577078350643,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        },
+        "az216_el30": {
+          "foreground_fraction": 0.2942635416666667,
+          "foreground_mean_value": 61.13140030608428,
+          "pure_black_fraction": 2.0833333333333334e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az288_el30": {
+          "foreground_fraction": 0.2486953125,
+          "foreground_mean_value": 69.32212204665319,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        },
+        "az000_el60": {
+          "foreground_fraction": 0.21184791666666666,
+          "foreground_mean_value": 81.3640026093142,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        },
+        "az072_el60": {
+          "foreground_fraction": 0.21326041666666667,
+          "foreground_mean_value": 76.44814145459874,
+          "pure_black_fraction": 2.0833333333333334e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az144_el60": {
+          "foreground_fraction": 0.16936354166666667,
+          "foreground_mean_value": 51.12624880321957,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        },
+        "az216_el60": {
+          "foreground_fraction": 0.17599322916666665,
+          "foreground_mean_value": 49.765106967301655,
+          "pure_black_fraction": 1.5625e-06,
+          "pure_white_fraction": 0.0
+        },
+        "az288_el60": {
+          "foreground_fraction": 0.16848385416666667,
+          "foreground_mean_value": 62.49927818256571,
+          "pure_black_fraction": 0.0,
+          "pure_white_fraction": 0.0
+        }
+      }
+    },
+    {
+      "id": "background_color",
+      "description": "위쪽 두 모서리 픽셀이 설정한 중립 배경색과 같음(Standard 색 관리 확인)",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "expected_srgb8": [
+          128,
+          128,
+          128
+        ],
+        "top_corner_pixels": {
+          "az000_el00": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az072_el00": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az144_el00": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az216_el00": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az288_el00": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az000_el30": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az072_el30": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az144_el30": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az216_el30": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az288_el30": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az000_el60": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az072_el60": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az144_el60": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az216_el60": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ],
+          "az288_el60": [
+            [
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "roi_in_frame",
+      "description": "머리 ROI 가 모든 시점에서 화면 안에(여백 포함) 들어옴",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "roi_box_min_margin_fraction": 0.10000000000000009,
+        "required_margin_fraction": 0.1,
+        "distance_mode": "auto(ROI 상자 꼭짓점 8개 × 15개 시점, 여백 포함)",
+        "vertices_inside_roi": 145612,
+        "roi_vertices_min_margin_fraction": 0.16763781457174898
+      }
+    },
+    {
+      "id": "top_not_cut",
+      "description": "어느 시점에서도 정수리·모발이 화면 위 가장자리에 닿지 않음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "foreground_pixels_on_top_row": {
+          "az000_el00": 0,
+          "az072_el00": 0,
+          "az144_el00": 0,
+          "az216_el00": 0,
+          "az288_el00": 0,
+          "az000_el30": 0,
+          "az072_el30": 0,
+          "az144_el30": 0,
+          "az216_el30": 0,
+          "az288_el30": 0,
+          "az000_el60": 0,
+          "az072_el60": 0,
+          "az144_el60": 0,
+          "az216_el60": 0,
+          "az288_el60": 0
+        }
+      }
+    },
+    {
+      "id": "side_edges_clear_around_head",
+      "description": "머리 중심 높이보다 위에서는 형상이 좌우 가장자리에 닿지 않음",
+      "passed": true,
+      "required": false,
+      "ran": true,
+      "details": {
+        "first_row_touching_side_edge": {
+          "az000_el00": null,
+          "az072_el00": 801,
+          "az144_el00": null,
+          "az216_el00": 1320,
+          "az288_el00": 837,
+          "az000_el30": null,
+          "az072_el30": 819,
+          "az144_el30": null,
+          "az216_el30": null,
+          "az288_el30": 985,
+          "az000_el60": null,
+          "az072_el60": 831,
+          "az144_el60": null,
+          "az216_el60": null,
+          "az288_el60": null
+        },
+        "image_center_row": 800.0
+      }
+    },
+    {
+      "id": "body_exposure",
+      "description": "머리에서 먼 몸통·다리(고도각 0° 화면 아래 경계의 1.3배보다 아래)가 어느 시점에서도 화면의 5% 넘게 들어오지 않음",
+      "passed": true,
+      "required": false,
+      "ran": true,
+      "details": {
+        "far_below_z_threshold_aligned": -0.6239808967520588,
+        "area_fraction_far_below_per_view": {
+          "az000_el00": 0.0,
+          "az072_el00": 0.0,
+          "az144_el00": 0.0,
+          "az216_el00": 0.0,
+          "az288_el00": 0.0,
+          "az000_el30": 0.0,
+          "az072_el30": 0.0,
+          "az144_el30": 0.0,
+          "az216_el30": 0.0,
+          "az288_el30": 0.0,
+          "az000_el60": 0.0,
+          "az072_el60": 0.0,
+          "az144_el60": 0.0,
+          "az216_el60": 0.0,
+          "az288_el60": 0.0
+        },
+        "area_fraction_below_roi_per_view_for_reference": {
+          "az000_el00": 0.199375,
+          "az072_el00": 0.215,
+          "az144_el00": 0.15354166666666666,
+          "az216_el00": 0.22604166666666667,
+          "az288_el00": 0.16625,
+          "az000_el30": 0.220625,
+          "az072_el30": 0.21354166666666666,
+          "az144_el30": 0.15875,
+          "az216_el30": 0.208125,
+          "az288_el30": 0.17354166666666668,
+          "az000_el60": 0.16375,
+          "az072_el60": 0.164375,
+          "az144_el60": 0.12916666666666668,
+          "az216_el60": 0.12145833333333333,
+          "az288_el60": 0.133125
+        },
+        "crop_enabled": true,
+        "note": "정점 투영이 덮는 화면 비율(가림 무시, 20px 격자). 넘으면 crop 사용을 검토한다. 최종 판단은 contact sheet 육안 확인."
+      }
+    },
+    {
+      "id": "originals_unchanged",
+      "description": "렌더링 뒤에도 원본 ZIP 과 풀린 OBJ·텍스처의 sha256 이 다운로드 직후와 같음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "zip_sha256_matches": true,
+        "files": [
+          {
+            "relative_path": "HSR0102-Body-048_LOD0.obj",
+            "ok": true
+          },
+          {
+            "relative_path": "HSR0102-Body-048_LOD0_u0_v0_diffuse.png",
+            "ok": true
+          },
+          {
+            "relative_path": "HSR0102-Body-048-Square.jpg",
+            "ok": true
+          },
+          {
+            "relative_path": "pose_metadata.json",
+            "ok": true
+          },
+          {
+            "relative_path": "person_metadata.json",
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "azimuth0_is_front",
+      "description": "수평각 0°·고도각 0° 이미지에서 얼굴이 정면으로 검출되고, 뒤쪽 시점에서는 정면 얼굴이 검출되지 않음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "front_view": "az000_el00",
+        "face_detected_in_front_view": true,
+        "detector_residual_yaw_deg_rough": 5.525475717533316,
+        "per_level_view": {
+          "az000_el00": {
+            "face_detected": true,
+            "score": 0.9423827528953552,
+            "eye_separation_over_face_width": 0.46624784968185506,
+            "nose_offset_over_eye_separation": -0.05804269503708428
+          },
+          "az072_el00": {
+            "face_detected": true,
+            "score": 0.9276778697967529,
+            "eye_separation_over_face_width": 0.31252293785471663,
+            "nose_offset_over_eye_separation": -0.8935678846580681
+          },
+          "az144_el00": {
+            "face_detected": false,
+            "score": null,
+            "eye_separation_over_face_width": 0.0,
+            "nose_offset_over_eye_separation": NaN
+          },
+          "az216_el00": {
+            "face_detected": false,
+            "score": null,
+            "eye_separation_over_face_width": 0.0,
+            "nose_offset_over_eye_separation": NaN
+          },
+          "az288_el00": {
+            "face_detected": true,
+            "score": 0.9226005673408508,
+            "eye_separation_over_face_width": 0.23508306728772263,
+            "nose_offset_over_eye_separation": 1.189834579072527
+          }
+        },
+        "frontal_face_in_back_views": [],
+        "symmetry_plane_valid": true,
+        "symmetry_plane_residual_yaw_deg": 0.0,
+        "symmetry_plane": {
+          "front_azimuth_deg": 0.0,
+          "correction_from_initial_deg": 0.0,
+          "head_roll_deg": -5.5,
+          "symmetry_plane_up": [
+            0.09584575252022398,
+            0.0,
+            0.9953961983671789
+          ],
+          "mean_asymmetry_over_ipd": 0.011970609205779635,
+          "sharpness_cost_ratio_at_4deg": 3.2063353690607848,
+          "points_used": 6765,
+          "valid": true
+        },
+        "rule": "대칭면이 유효하면 |대칭면 잔차| ≤ 5° 이고 |검출기 잔차| ≤ 20°; 유효하지 않으면 |검출기 잔차| ≤ 12°. 정면 시점에서 얼굴이 검출되어야 하고 뒤쪽 시점에는 정면 얼굴이 없어야 한다.",
+        "override": null,
+        "note": "검출기 잔차는 한 장의 2D 랜드마크로 본 대략값(±5° 수준의 잡음, 고개를 숙이면 더 큼)이고, 대칭면 잔차는 얼굴 중앙부 형상이 거울 대칭이 되는 방향과 az=0 의 차이다. 최종 판단은 contact sheet 육안 확인."
+      }
+    },
+    {
+      "id": "azimuth_sign_and_sides",
+      "description": "수평각 부호: 카메라 위치의 좌우가 규격 수식(azimuth_sign)과 일치하고, 얼굴 랜드마크로 본 사람의 좌우와 모순이 없음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "camera_side_per_view": {
+          "az000_el00": "front / center",
+          "az072_el00": "front / subject_left",
+          "az144_el00": "back / subject_left",
+          "az216_el00": "back / subject_right",
+          "az288_el00": "front / subject_right",
+          "az000_el30": "front / center",
+          "az072_el30": "front / subject_left",
+          "az144_el30": "back / subject_left",
+          "az216_el30": "back / subject_right",
+          "az288_el30": "front / subject_right",
+          "az000_el60": "front / center",
+          "az072_el60": "front / subject_left",
+          "az144_el60": "back / subject_left",
+          "az216_el60": "back / subject_right",
+          "az288_el60": "front / subject_right"
+        },
+        "azimuth_sign": 1,
+        "left_eye_aligned_x": 0.029590941419665298,
+        "right_eye_aligned_x": -0.026130118640779264,
+        "eyes_note": "얼굴 검출기가 '사람의 왼쪽 눈'이라고 한 점이 +X 쪽에 있어야 +X = 사람의 왼쪽이다."
+      }
+    },
+    {
+      "id": "crop_preserves_uv_materials",
+      "description": "crop 은 복제본에만 적용되었고 UV·재질 연결이 유지됨",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "faces_before": 1000004,
+        "faces_after": 688619,
+        "uv_layers_after": [
+          "UVMap"
+        ],
+        "materials_after": [
+          "HSR0102-Body-048_LOD0_u0_v0"
+        ],
+        "original_object_faces_unchanged": 1000004,
+        "cut_is_capped": false,
+        "planes_world": [
+          {
+            "point": [
+              0.0,
+              0.0,
+              -0.5999816314923643
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              1.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_cut_interior_visible",
+      "description": "crop 으로 생긴 절단면의 안쪽(빈 속)이 어느 시점에서도 보이지 않음",
+      "passed": true,
+      "required": true,
+      "ran": true,
+      "details": {
+        "new_backface_pixels_vs_uncropped_per_view": {
+          "az000_el00": 0,
+          "az072_el00": 0,
+          "az144_el00": 0,
+          "az216_el00": 0,
+          "az288_el00": 0,
+          "az000_el30": 0,
+          "az072_el30": 0,
+          "az144_el30": 0,
+          "az216_el30": 0,
+          "az288_el30": 0,
+          "az000_el60": 0,
+          "az072_el60": 0,
+          "az144_el60": 0,
+          "az216_el60": 0,
+          "az288_el60": 0
+        },
+        "note": "자른 복제본에서만 새로 나타난 뒷면 픽셀 수(자르지 않은 원본의 같은 시점과 비교). 절단 '경계선'(윤곽)이 화면에 들어오는지는 별개이며 contact sheet 로 확인한다."
+      }
+    },
+    {
+      "id": "scan_backfaces_visible",
+      "description": "원본 스캔의 뒤집힌 면·구멍이 보이지 않음(보이면 메우지 않고 한계로 기록)",
+      "passed": false,
+      "required": false,
+      "ran": true,
+      "details": {
+        "backface_pixel_fraction_per_view": {
+          "az000_el00": 4.6875e-06,
+          "az072_el00": 8.333333333333334e-06,
+          "az144_el00": 6.25e-06,
+          "az216_el00": 9.895833333333333e-06,
+          "az288_el00": 1.09375e-05,
+          "az000_el30": 7.291666666666667e-06,
+          "az072_el30": 4.166666666666667e-06,
+          "az144_el30": 5.208333333333333e-06,
+          "az216_el30": 8.333333333333334e-06,
+          "az288_el30": 5.208333333333333e-06,
+          "az000_el60": 4.6875e-06,
+          "az072_el60": 2.6041666666666666e-06,
+          "az144_el60": 0.0,
+          "az216_el60": 0.0,
+          "az288_el60": 2.6041666666666666e-06
+        },
+        "backface_pixels_per_view": {
+          "az000_el00": 9,
+          "az072_el00": 16,
+          "az144_el00": 12,
+          "az216_el00": 19,
+          "az288_el00": 21,
+          "az000_el30": 14,
+          "az072_el30": 8,
+          "az144_el30": 10,
+          "az216_el30": 16,
+          "az288_el30": 10,
+          "az000_el60": 9,
+          "az072_el60": 5,
+          "az144_el60": 0,
+          "az216_el60": 0,
+          "az288_el60": 5
+        },
+        "note": "뒷면만 흰색으로 빛나게 한 별도 렌더의 흰 픽셀. 주로 모발의 얇은 조각·스캔 구멍에서 나온다."
+      }
+    },
+    {
+      "id": "exposure_consistency",
+      "description": "시점 간 전경 평균 밝기 차이가 크지 않음(고정 조명·노출 확인용 지표)",
+      "passed": true,
+      "required": false,
+      "ran": true,
+      "details": {
+        "foreground_mean_value_per_view": {
+          "az000_el00": 99.02123088346902,
+          "az072_el00": 90.70371852346604,
+          "az144_el00": 60.42117830268464,
+          "az216_el00": 64.07172453716906,
+          "az288_el00": 69.80611702175611,
+          "az000_el30": 91.84386461189087,
+          "az072_el30": 86.32636848594781,
+          "az144_el30": 56.56577078350643,
+          "az216_el30": 61.13140030608428,
+          "az288_el30": 69.32212204665319,
+          "az000_el60": 81.3640026093142,
+          "az072_el60": 76.44814145459874,
+          "az144_el60": 51.12624880321957,
+          "az216_el60": 49.765106967301655,
+          "az288_el60": 62.49927818256571
+        }
+      }
+    },
+    {
+      "id": "review_approved",
+      "description": "모델 설정이 검수 승인된 상태에서 렌더링됨",
+      "passed": true,
+      "required": false,
+      "ran": true,
+      "details": {
+        "review": {
+          "approved": true,
+          "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+          "reviewed_at": "2026-11-11T05:47:59+00:00",
+          "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+          "edit_notes": "[2026-11-11] 자동 ROI 가 풍성한 곱슬머리보다 작음 → 다른 자세와 같은 크기로 확장, crop 사용"
+        }
+      }
+    }
+  ],
+  "visual_review": {
+    "done": true,
+    "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+    "reviewed_at": "2026-11-11T06:22:02+00:00",
+    "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임). 손 흔드는 자세: 손이 얼굴 옆에 보임.",
+    "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+  },
+  "render": {
+    "blender_version": "4.5.16 LTS",
+    "settings_applied": {
+      "engine": "CYCLES",
+      "device": "GPU",
+      "backend": "OPTIX",
+      "device_names": [
+        "NVIDIA TITAN RTX"
+      ],
+      "samples": 256,
+      "adaptive_sampling": false,
+      "denoising": false,
+      "max_bounces": 4,
+      "diffuse_bounces": 2,
+      "pixel_filter": "BLACKMAN_HARRIS",
+      "filter_width": 1.5,
+      "seed": 0,
+      "dither_intensity": 0.0,
+      "film_transparent": false,
+      "output": {
+        "file_format": "PNG",
+        "color_mode": "RGB",
+        "color_depth": "8"
+      }
+    },
+    "color_management": {
+      "display_device": "sRGB",
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0.0,
+      "gamma": 1.0,
+      "use_curve_mapping": false,
+      "use_white_balance": false
+    },
+    "lighting": {
+      "world": {
+        "type": "균일 환경광(모든 방향) + 카메라 전용 배경색",
+        "world_color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "world_strength": 1.0,
+        "background_srgb8": [
+          128,
+          128,
+          128
+        ],
+        "background_linear": [
+          0.21586050011389926,
+          0.21586050011389926,
+          0.21586050011389926
+        ]
+      },
+      "area_lights": [],
+      "fixed_to": "모델(정렬 좌표계). 카메라만 움직인다."
+    },
+    "shading": {
+      "materials": [
+        {
+          "material": "HSR0102-Body-048_LOD0_u0_v0",
+          "texture_path": "data/extracted/HSR0102/HSR0102-Body-048/Scan-LOD0/HSR0102-Body-048_LOD0_u0_v0_diffuse.png",
+          "colorspace": "sRGB",
+          "link_rule": "파일명 규칙으로 연결",
+          "faces": 1000004,
+          "uv_layer": "UVMap",
+          "shader": "Diffuse BSDF"
+        }
+      ],
+      "smooth_mode": "smooth",
+      "unlit_mix": 0.0
+    },
+    "post_processing": "없음(디노이저·보정·사후 crop 없음)",
+    "seconds_total": 64.9,
+    "seconds_per_final_view": {
+      "az000_el00": 6.02,
+      "az072_el00": 3.69,
+      "az144_el00": 3.4,
+      "az216_el00": 3.89,
+      "az288_el00": 3.54,
+      "az000_el30": 3.53,
+      "az072_el30": 3.59,
+      "az144_el30": 3.45,
+      "az216_el30": 3.65,
+      "az288_el30": 3.49,
+      "az000_el60": 3.46,
+      "az072_el60": 3.28,
+      "az144_el60": 3.03,
+      "az216_el60": 2.91,
+      "az288_el60": 2.93
+    }
+  },
+  "mesh": {
+    "vertices": 499828,
+    "faces": 1000004,
+    "triangles_only": true,
+    "bbox_min_source": [
+      -0.3005148768424988,
+      -0.39828598499298096,
+      -4.9566853704163805e-05
+    ],
+    "bbox_max_source": [
+      0.17065703868865967,
+      0.38089248538017273,
+      1.702709674835205
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "color_attributes": [
+      "Color"
+    ],
+    "material_slots": [
+      "HSR0102-Body-048_LOD0_u0_v0"
+    ],
+    "object_matrix_is_identity": true,
+    "uv_min": [
+      0.00012199999764561653,
+      0.00012199999764561653
+    ],
+    "uv_max": [
+      0.9998760223388672,
+      0.9803469777107239
+    ],
+    "uv_within_unit_square": true,
+    "materials_in_use": [
+      {
+        "material": "HSR0102-Body-048_LOD0_u0_v0",
+        "faces": 1000004,
+        "face_center_min_source": [
+          -0.30047157406806946,
+          -0.398263543844223,
+          -1.5472995073650964e-05
+        ],
+        "face_center_max_source": [
+          0.17037911713123322,
+          0.3807375133037567,
+          1.7026363611221313
+        ]
+      }
+    ],
+    "smooth_faces_fraction_as_imported": 0.0,
+    "import_identity_max_abs_diff": 8.703175569113597e-09,
+    "smooth_mode_applied": "smooth"
+  },
+  "crop": {
+    "faces_before": 1000004,
+    "faces_after": 688619,
+    "uv_layers_before": [
+      "UVMap"
+    ],
+    "uv_layers_after": [
+      "UVMap"
+    ],
+    "materials_before": [
+      "HSR0102-Body-048_LOD0_u0_v0"
+    ],
+    "materials_after": [
+      "HSR0102-Body-048_LOD0_u0_v0"
+    ],
+    "original_object_faces_unchanged": 1000004,
+    "cut_is_capped": false,
+    "seconds": 1.23,
+    "uv_and_materials_preserved": true,
+    "available": true,
+    "planes_world": [
+      {
+        "point": [
+          0.0,
+          0.0,
+          -0.5999816314923643
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "known_limitations": [
+    "원본 스캔의 구멍·모발 뭉침·표면 잡음은 메우거나 고치지 않았다(임의 생성 없음).",
+    "정면 방향과 머리 ROI 는 자동 추정값을 사람이 미리보기로 확인한 것이다. 정면각 오차는 수 도(°) 수준일 수 있다."
+  ],
+  "image_sha256": {
+    "az000_el00.png": "5412c3334a893bbf550b0bb93933c5bffe3363abc3f713c07ad7fed5895a6fe7",
+    "az072_el00.png": "0ac613166983f8ec80e8466ee25e6b23cf8366163bf9f5b121663b384a0b4c0e",
+    "az144_el00.png": "186449ecda87bdef8c84a9e6b5ca7da1a2cbc175ee4ee239bc6fe2955188ed07",
+    "az216_el00.png": "b9d3db4b24343f4881947601b80b940e3cd4051b1f8fca359e5cc1e406069c16",
+    "az288_el00.png": "3ec5188f0f7bb68eee30c15346181093ecf9227456a136c017b98c8f581d611e",
+    "az000_el30.png": "617135509ef80f598c8f470ce835e7d83ac2ad9cb93e258d87aa02430efab05f",
+    "az072_el30.png": "49ca239f513cbd618b5a0946fec4691fe4b98d9cafe764ad851f359f0aebae77",
+    "az144_el30.png": "ee27730a63e3e9496cb6594ab48ac2e7ceefaaa4bd36db0f2edbe853dda11372",
+    "az216_el30.png": "4d725ece206d22776319d0caabe25b34ad97e49de4c5bc05e15f40b81736a4e6",
+    "az288_el30.png": "3a59e591f513fb450474130e48c2f969d6de0ff4daa03f2504bcde33e4765671",
+    "az000_el60.png": "ac41ada0a780ca693db7912981f67fe61f68c9d57f6dec6ae5cf831767e5dc79",
+    "az072_el60.png": "ef56b462a47faa9554c70bcbe59143f13df6d1b52e3e4db5beee51f4fdf91769",
+    "az144_el60.png": "d4399b71e1495fc0c6af1529f1fd986281ebb470066f4af3eca65dd9e70b8379",
+    "az216_el60.png": "c8d7c581c27f6c3f1a51b047ac3a7b0a8ea16e4cc1c1c8ef3fb1fdecd897cc24",
+    "az288_el60.png": "56f37d2067ef76f6f9448035edb888429d6a5d693fefac2b79bb11b936d757ef"
+  },
+  "render_inputs": {
+    "pipeline_version": "0.1.0",
+    "code_sha256": {
+      "blender_scripts/bl_main.py": "447614f374a60d96bd8b99c8425a50c8fb9dfcce8e96d6b7580c78dbf55356bc",
+      "blender_scripts/bl_common.py": "913179319b0627aa8335a5c5b29384e01ace9a265f19c89a544e3393bfcf38d8",
+      "hsrd_head/rig.py": "00c025e39e1d55fb3b076365bd4f197beef0bd4258cdd4007a7ee1938dee8b3b"
+    },
+    "rig": {
+      "azimuths_deg": [
+        0,
+        72,
+        144,
+        216,
+        288
+      ],
+      "elevations_deg": [
+        0,
+        30,
+        60
+      ],
+      "resolution": [
+        1200,
+        1600
+      ],
+      "horizontal_fov_deg": 40.0,
+      "sensor_width_mm": 36.0,
+      "margin_fraction": 0.1,
+      "azimuth_sign": 1
+    },
+    "render": {
+      "engine": "CYCLES",
+      "samples": 256,
+      "max_bounces": 4,
+      "diffuse_bounces": 2,
+      "use_denoising": false,
+      "pixel_filter": "BLACKMAN_HARRIS",
+      "filter_width": 1.5,
+      "seed": 0,
+      "png_compression": 15
+    },
+    "color": {
+      "display_device": "sRGB",
+      "view_transform": "Standard",
+      "look": "None",
+      "exposure": 0.0,
+      "gamma": 1.0,
+      "background_srgb8": [
+        128,
+        128,
+        128
+      ]
+    },
+    "shading": {
+      "world_strength": 1.0,
+      "world_color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "unlit_mix": 0.0,
+      "area_lights": []
+    },
+    "model": {
+      "up_source": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "front_source": [
+        -0.466001,
+        0.884784,
+        0.0
+      ],
+      "head_center_source": [
+        -0.03452,
+        -0.01596,
+        1.59713
+      ],
+      "matrix_override": null,
+      "head_roi_aligned": {
+        "min": [
+          -0.18,
+          -0.16,
+          -0.22
+        ],
+        "max": [
+          0.18,
+          0.17,
+          0.15
+        ]
+      },
+      "crop": {
+        "enabled": true,
+        "keep_above_z": "auto",
+        "extra_planes": []
+      },
+      "camera_distance": {
+        "mode": "auto",
+        "value": null
+      }
+    },
+    "model_defaults": {
+      "crop_enabled": false,
+      "crop_keep_above_z": "auto",
+      "crop_auto_factor": 1.25
+    },
+    "source": {
+      "archive_sha256": "e638b0c4fd64165c197ef044daf88be875454255ef580dd2cb67890a0ad1b7f1",
+      "files": {
+        "HSR0102-Body-048_LOD0.obj": "04e2eb2be3cc413be4a20dc4278c208773a297a2082657ff8a76c89a55b94bec",
+        "HSR0102-Body-048_LOD0_u0_v0_diffuse.png": "2537ac2d02eb57069cbf21aad923168846719d1ccf23714146be131a462dc4b1",
+        "HSR0102-Body-048-Square.jpg": "ae8ac3706f47962848b775eabe3c83b24647631e440060aed54862a9910dac86",
+        "pose_metadata.json": "cd9523a0c1390c884bd0191be9c0ae382b3275653f04acf04e90fa65090a0569",
+        "person_metadata.json": "8dc5299bcb8891ce5556d957774b046b6517b70b6faa8cb6ad58c7f21569101f"
+      },
+      "material_to_texture": {
+        "HSR0102-Body-048_LOD0_u0_v0": "HSR0102-Body-048_LOD0_u0_v0_diffuse.png"
+      },
+      "materials_without_texture": []
+    },
+    "blender_version": "4.5.16"
+  },
+  "render_inputs_fingerprint": "966978a7e0cd5985c03995f8a68bee6d61566b3e1eaed854ee43d147e5ae7d9c"
+}

@@ -1,0 +1,286 @@
+{
+  "schema": "hsrd_head.source/1",
+  "person_id": "HSR0102",
+  "pose_id": "HSR0102-Body-034",
+  "dataset": {
+    "name": "HSRD-100",
+    "repo_id": "digitalrealitylab/HSRD-100",
+    "homepage": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100",
+    "revision": "9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a",
+    "revision_requested": "9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a",
+    "revision_last_modified": "2025-09-18T20:05:01.000Z",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_tag_from_hub": "cc-by-4.0",
+    "attribution": "HSRD-100: 100 High-Quality 3D Human Scans Dataset, Digital Reality Lab (2025)",
+    "license_note": "데이터셋 카드(README)의 라이선스는 CC BY 4.0 이다. 메타데이터 JSON 의 'license: Commercial' 은 원 제공처(HumanScanRepository)의 상품 구분 값으로 보이며, 이 저장소 배포본에는 카드의 CC BY 4.0 이 적용된다고 해석했다."
+  },
+  "archive": {
+    "scan_variant": "Scan-LOD0",
+    "repo_path": "data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip",
+    "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip",
+    "size_bytes": 274379316,
+    "sha256": "c76f0138a32ffdde018a3b76ccefc836b8fa8cb45bc6897d547220764b81e538",
+    "sha256_check": "Hugging Face tree API 의 LFS oid 와 로컬 계산값이 일치",
+    "http": {
+      "redirect_chain": [
+        {
+          "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip",
+          "status": 302,
+          "headers": {
+            "x-repo-commit": "9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a",
+            "x-linked-size": "274379316",
+            "x-linked-etag": "\"c76f0138a32ffdde018a3b76ccefc836b8fa8cb45bc6897d547220764b81e538\"",
+            "content-length": "1196",
+            "content-type": "text/plain; charset=utf-8",
+            "accept-ranges": "bytes"
+          }
+        },
+        {
+          "url": "https://us.aws.cdn.hf.co/xet-bridge-us/68cbe20d548d9ab0c789b562/f27cff6d44a85b71fc6fef4065e7acf822db14fba62b41f7ad0a681dc0af709c",
+          "status": 200,
+          "headers": {
+            "etag": "\"f27cff6d44a85b71fc6fef4065e7acf822db14fba62b41f7ad0a681dc0af709c\"",
+            "content-length": "274379316",
+            "content-type": "application/zip",
+            "accept-ranges": "bytes"
+          }
+        }
+      ],
+      "get_status": 200
+    },
+    "downloaded_at": "2026-11-11T05:03:59+00:00",
+    "zip_crc_test": "통과",
+    "zip_members": [
+      {
+        "name": "HSR0102-Body-034_LOD0.obj",
+        "size_bytes": 101118154,
+        "compressed_bytes": 37272866,
+        "crc32": "41232c64",
+        "role": "mesh"
+      },
+      {
+        "name": "HSR0102-Body-034_LOD0_u0_v0_diffuse.png",
+        "size_bytes": 238835809,
+        "compressed_bytes": 236995257,
+        "crc32": "8b7b09dd",
+        "role": "texture"
+      },
+      {
+        "name": "HSR0102-Body-034-Square.jpg",
+        "size_bytes": 216281,
+        "compressed_bytes": 109813,
+        "crc32": "bcc62aad",
+        "role": "image_other"
+      },
+      {
+        "name": "pose_metadata.json",
+        "size_bytes": 919,
+        "compressed_bytes": 401,
+        "crc32": "6ccd3152",
+        "role": "metadata"
+      },
+      {
+        "name": "person_metadata.json",
+        "size_bytes": 706,
+        "compressed_bytes": 319,
+        "crc32": "25a9a538",
+        "role": "metadata"
+      }
+    ],
+    "local_path": "data/raw/HSR0102/HSR0102-Body-034/HSR0102-Body-034-Scan-LOD0.zip"
+  },
+  "extracted": {
+    "local_dir": "data/extracted/HSR0102/HSR0102-Body-034/Scan-LOD0",
+    "extracted_at": "2026-11-11T05:04:02+00:00",
+    "files": [
+      {
+        "relative_path": "HSR0102-Body-034_LOD0.obj",
+        "size_bytes": 101118154,
+        "sha256": "3b8c1fa4707939d72072e6029f0e3d0a4d9019aad0522e2042eeb3c2ed117606",
+        "role": "mesh"
+      },
+      {
+        "relative_path": "HSR0102-Body-034_LOD0_u0_v0_diffuse.png",
+        "size_bytes": 238835809,
+        "sha256": "4c7866dad77265ffb3c6fee92a344d7f00b1e10a70b5371b1c8254f33041072d",
+        "role": "texture"
+      },
+      {
+        "relative_path": "HSR0102-Body-034-Square.jpg",
+        "size_bytes": 216281,
+        "sha256": "1e990b674f68a704b38fca5f5235e19e9575aa921b49df67ce422c18a550ff44",
+        "role": "image_other"
+      },
+      {
+        "relative_path": "pose_metadata.json",
+        "size_bytes": 919,
+        "sha256": "798ebde9e51736744d1d6bed3b9fa83180792d59f39c410e76680e27bf5f98c4",
+        "role": "metadata"
+      },
+      {
+        "relative_path": "person_metadata.json",
+        "size_bytes": 706,
+        "sha256": "8dc5299bcb8891ce5556d957774b046b6517b70b6faa8cb6ad58c7f21569101f",
+        "role": "metadata"
+      }
+    ],
+    "note": "원본 OBJ/텍스처는 수정하지 않으며 읽기 전용으로 보관한다."
+  },
+  "mesh": {
+    "obj": "HSR0102-Body-034_LOD0.obj",
+    "obj_scan": {
+      "line_counts": {
+        "v": 499933,
+        "vt": 669905,
+        "vn": 0,
+        "f": 1000002
+      },
+      "mtllib": [
+        "HSR0102-Body-034_LOD0.mtl"
+      ],
+      "usemtl": [
+        "HSR0102-Body-034_LOD0_u0_v0"
+      ],
+      "faces_per_material": {
+        "HSR0102-Body-034_LOD0_u0_v0": 1000002
+      },
+      "header_comments": [
+        "Wavefront OBJ file",
+        "Created in RealityScan",
+        "Engine version v2.0.0.118621",
+        "499933 vertices, 1000002 faces"
+      ],
+      "vertex_colors_in_obj": true,
+      "first_vertices": [
+        [
+          -0.09941099056983184,
+          0.021320391388227163,
+          0.40666883068793
+        ],
+        [
+          -0.09822105223932918,
+          0.02205102630694562,
+          0.4075389393442237
+        ],
+        [
+          -0.09860472693009577,
+          0.0213370337341888,
+          0.40986858702412765
+        ],
+        [
+          -0.15411781965335952,
+          0.1036152286516965,
+          0.4682131334819277
+        ],
+        [
+          -0.15520213967253696,
+          0.10106958878752018,
+          0.46806829418649043
+        ],
+        [
+          -0.15424328644328142,
+          0.10201879422145889,
+          0.46934484693973344
+        ],
+        [
+          -0.15516301723129527,
+          0.10054904270302337,
+          0.46862357109031505
+        ],
+        [
+          -0.10020477071629703,
+          0.020320095852616005,
+          0.40802686299543756
+        ]
+      ]
+    },
+    "has_mtl": false,
+    "textures": {
+      "material_to_texture": {
+        "HSR0102-Body-034_LOD0_u0_v0": {
+          "texture": "HSR0102-Body-034_LOD0_u0_v0_diffuse.png",
+          "rule": "MTL 없음 → 파일명 규칙 '<usemtl 이름>_diffuse.<확장자>'",
+          "image": {
+            "width": 16384,
+            "height": 16384,
+            "mode": "RGB",
+            "format": "PNG"
+          }
+        }
+      },
+      "materials_without_texture": [],
+      "materials_without_texture_note": null,
+      "mtl_files_in_archive": [],
+      "mtllib_referenced_but_missing": [
+        "HSR0102-Body-034_LOD0.mtl"
+      ],
+      "uv_tiles_note": "파일명의 u0_v0 는 UV 타일(0,0)을 뜻한다. 타일이 하나뿐이면 일반 UV(0~1) 텍스처다."
+    },
+    "units": {
+      "documented": false,
+      "note": "OBJ·README 어디에도 길이 단위가 적혀 있지 않다. 단위를 임의로 표기하지 않는다."
+    }
+  },
+  "upstream_metadata": {
+    "pose_meta": {
+      "pose_id": "HSR0102-Body-034",
+      "person_id": "HSR0102",
+      "pose_type": "Standing",
+      "activity": "Relaxed standing",
+      "clothing": "Casual wear",
+      "upper_clothing": "T-shirt",
+      "lower_clothing": "Jeans",
+      "footwear": "Sneakers",
+      "accessories": {
+        "head": "Hairband",
+        "hand": "None",
+        "neck": "None",
+        "waist": "None",
+        "wrist": "None",
+        "face": "Earrings"
+      },
+      "outfit_type": "Casual",
+      "primary_color": "Purple",
+      "secondary_color": "Blue",
+      "season": "Spring",
+      "profession": "None",
+      "status": "Online",
+      "price_commercial": "70",
+      "price_personal": "35",
+      "polycount": "5000000",
+      "texture_format": "PNG",
+      "texture_resolution": "16384 px",
+      "file_format": "OBJ",
+      "created_date": "",
+      "license": "Commercial"
+    },
+    "person_meta": {
+      "person_id": "HSR0102",
+      "age": "22",
+      "sex": "Female",
+      "ethnicity": "African",
+      "height": "166",
+      "weight": "63",
+      "country": "NGA",
+      "alias": "Molly",
+      "body_type": "Normal weight",
+      "skin_type": "Type 5 - Dark Brown Skin",
+      "hair_color": "Black",
+      "hair_type": "Type 4 Coily",
+      "eye_color": "Dark Brown",
+      "expression": "Neutral",
+      "beard": "False",
+      "piercing": "False",
+      "tattoos": "False",
+      "scars": "False",
+      "stretch_marks": "False",
+      "varicose_veins": "False",
+      "skin_condition": "False",
+      "muscular": "False",
+      "skinny": "False",
+      "license": "Commercial"
+    }
+  },
+  "recorded_at": "2026-11-11T05:21:13+00:00"
+}

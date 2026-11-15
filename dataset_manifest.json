@@ -1,0 +1,3917 @@
+{
+  "schema": "hsrd_head.dataset_manifest/1",
+  "generated_at": "2026-11-11T06:22:02+00:00",
+  "pipeline_version": "0.1.0",
+  "description": "HSRD-100 전신 스캔에서 머리·목 중심으로 렌더링한 다시점 컬러 이미지(모델당 15장)",
+  "source_dataset": {
+    "name": "HSRD-100",
+    "repo_id": "digitalrealitylab/HSRD-100",
+    "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100",
+    "revision": "9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a",
+    "scan_variant": "Scan-LOD0",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "HSRD-100: 100 High-Quality 3D Human Scans Dataset, Digital Reality Lab (2025)",
+    "structure_note": "100명이 아니라 10명 × 10개 자세 = 100개 스캔이다. person_id 와 pose_id 를 모두 유지한다."
+  },
+  "rig": {
+    "note": "우리 프로젝트가 정한 렌더링 규격(실제 촬영 장비·AI Hub 규격과 같다는 의미가 아님)",
+    "azimuths_deg": [
+      0,
+      72,
+      144,
+      216,
+      288
+    ],
+    "elevations_deg": [
+      0,
+      30,
+      60
+    ],
+    "resolution": [
+      1200,
+      1600
+    ],
+    "horizontal_fov_deg": 40.0,
+    "margin_fraction": 0.1,
+    "azimuth_sign": 1,
+    "views_per_model": 15
+  },
+  "splits": {
+    "unit": "person_id (같은 사람의 모든 자세는 같은 split)",
+    "method": "사람 목록을 정렬한 뒤 seed 로 섞고 비율대로 배정(최대잉여법)",
+    "seed": 20261111,
+    "ratios": {
+      "train": 0.7,
+      "val": 0.1,
+      "test": 0.2
+    },
+    "people_source": "저장소 전체 사람 목록",
+    "assignment": {
+      "HSR0015": "train",
+      "HSR0023": "train",
+      "HSR0027": "train",
+      "HSR0028": "train",
+      "HSR0040": "test",
+      "HSR0042": "val",
+      "HSR0081": "train",
+      "HSR0102": "test",
+      "HSR0112": "train",
+      "HSR0161": "train"
+    },
+    "people_per_split": {
+      "train": [
+        "HSR0015",
+        "HSR0023",
+        "HSR0027",
+        "HSR0028",
+        "HSR0081",
+        "HSR0112",
+        "HSR0161"
+      ],
+      "val": [
+        "HSR0042"
+      ],
+      "test": [
+        "HSR0040",
+        "HSR0102"
+      ]
+    },
+    "leak_check_people_in_multiple_splits": []
+  },
+  "counts": {
+    "poses_in_output": 69,
+    "poses_qa_passed": 69,
+    "persons_qa_passed": 9,
+    "images_qa_passed": 1035,
+    "poses_visually_reviewed": 69,
+    "poses_excluded": 31
+  },
+  "entries": [
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-023",
+      "dir": "HSR0015/HSR0015-Body-023",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - contact sheet 직접 열람",
+        "reviewed_at": "2026-11-11T03:11:25+00:00",
+        "notes": "확인: 15칸 배치·라벨 일치, az0·el0 정면 얼굴, az72 는 피험자의 왼쪽 옆얼굴, az144/216 뒤, az288 오른쪽. 어깨 아래로 내려온 모발 끝까지 모든 시점에서 화면 안(ROI 수동 확장 결과). 빈/검은/뒤집힌 화면 없음. 고도각 30/60 에서 crop 된 상반신과 청바지 허리 일부가 보임(절단면 내부는 안 보임). ROI 가 커서 카메라 거리 r=1.016 으로 머리가 다른 모델보다 작게 잡힘. 한계(원본 스캔 그대로): 모발이 한 덩어리 표면으로 뭉쳐 있고 군데군데 어두운 얼룩·구멍 모양 텍스처가 있음. 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인",
+        "carried_over": {
+          "reason": "재렌더링한 이미지가 검수했던 이미지와 사실상 동일해 기록 유지",
+          "equivalent": true,
+          "max_abs_pixel_difference": 1,
+          "max_fraction_of_differing_pixels": 1.0416666666666666e-05
+        }
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 미리보기 육안 확인",
+        "reviewed_at": "2026-11-11T03:00:41+00:00",
+        "notes": "정면 보기에서 Z축 선이 코·턱 중앙을 지남(머리가 약 4도 기울어 있음). 자동 ROI 는 어깨 아래로 내려온 모발을 포함하지 못해 x, y(뒤), z(아래)를 수동 확장: 뒤/옆 보기에서 모발 끝이 노란 상자 안에 들어옴. crop 사용(auto 높이 z=-0.616 은 모발 끝 z≈-0.25 보다 충분히 아래라 모발을 자르지 않음). 사람(연구자)의 재확인 권장."
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "c07f62da8ccf100fc5d125b769ce4224c3ad327bcb66568361cfeb8a9938d4ef",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-023/scans/HSR0015-Body-023-Scan-LOD0.zip",
+        "sha256": "4d101ad5bf0a59f3e210ce193c4b01ec178cbf4e7800c71964fa5e2ee91937cf",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-023/scans/HSR0015-Body-023-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:49:14+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-032",
+      "dir": "HSR0015/HSR0015-Body-032",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "b5df2be77f6c79f7800ad0da229fb740700d2e577c30aadf52b266874b7530b2",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-032/scans/HSR0015-Body-032-Scan-LOD0.zip",
+        "sha256": "f994a8f1bd2d8c10c186a99bd34fde12f28651085d1864567b207b72b100e746",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-032/scans/HSR0015-Body-032-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:49:15+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-035",
+      "dir": "HSR0015/HSR0015-Body-035",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "00b9ce75c1d8c98b7010a8a977b57033ac1be9a021492d75366926da92e1ef35",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-035/scans/HSR0015-Body-035-Scan-LOD0.zip",
+        "sha256": "32ec447f0d37394ab7b884c214ff8a110825e6be0ddacbb2ab4674cf2e1ad822",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-035/scans/HSR0015-Body-035-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:49:14+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-049",
+      "dir": "HSR0015/HSR0015-Body-049",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "top_not_cut",
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 셀카로 든 팔·전화기가 화면 위 가장자리에 닿는 시점이 있음(머리·모발은 화면 안).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용 | [2026-11-11] 위로 든 팔·손(셀카 전화기 포함)이 화면 위 가장자리에 닿음 — 미리보기에서 확인. 머리·모발은 ROI 정점 검사로 화면 안"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "c01b178be973b8affc97b75a93b13d2dadb7f65226ff49c3c7011375cbb78845",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-049/scans/HSR0015-Body-049-Scan-LOD0.zip",
+        "sha256": "29ee15369555adc87aeb2cacc5ff96e4dbc29e5043453b8892556d2aaf446b05",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-049/scans/HSR0015-Body-049-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:13:27+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-054",
+      "dir": "HSR0015/HSR0015-Body-054",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "ff16becce0241a56f6cf422b3920a3b22743dc34be4d38dc6cb1810c6917924b",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-054/scans/HSR0015-Body-054-Scan-LOD0.zip",
+        "sha256": "14573f7a832dfe4d3b60b96b0fd3b1c469c3fd1abf81761370ab9d9d08cbf1ea",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-054/scans/HSR0015-Body-054-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:50:28+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-069",
+      "dir": "HSR0015/HSR0015-Body-069",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "azimuth0_is_front",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 사진 찍는 자세: az0 에서 얼굴이 휴대전화에 가려짐(자세 특성).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용 | [2026-11-11] 사진 찍는 자세: 얼굴 바로 앞의 휴대전화가 az0 시점에서 얼굴을 가려 자동 얼굴 검출 불가. 정면 방향은 미리보기(상단·옆 보기)와 얼굴 대칭면으로 확인"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "0f64d821700e90ed7a6a6a4de97b90eabb7ca53ce0a8935b73bbadbb48efed34",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-069/scans/HSR0015-Body-069-Scan-LOD0.zip",
+        "sha256": "2c3de67af011b55ec81b70c4c4044b0d1831e6e186678b395dba582419ea5bbb",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-069/scans/HSR0015-Body-069-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:13:28+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-070",
+      "dir": "HSR0015/HSR0015-Body-070",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 셀카로 든 팔·전화기가 화면 가장자리에 걸침.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨 아래로 내려온 모발 끝까지 ROI 확장(HSR0015-Body-023 과 같은 값), crop 사용"
+      },
+      "camera_distance": 1.0157958798394557,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "cb10a39817fbdb980fc52d2a104a8d8f4d1cc46f0aec057f9eb06ccd74a0b020",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-070/scans/HSR0015-Body-070-Scan-LOD0.zip",
+        "sha256": "52a8a6b2fac42a5afad85f11f5bc45488e1091f5af9588511c53ae285c459c06",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-070/scans/HSR0015-Body-070-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:13:25+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0015",
+      "pose_id": "HSR0015-Body-087",
+      "dir": "HSR0015/HSR0015-Body-087",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 포니테일이 뒤·위로 나와 ROI 확장, crop 사용"
+      },
+      "camera_distance": 0.9274377442285635,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "be8ffe269b13a21aac70691c20e1635b915966ebf253f1bb1e4f83a322c98500",
+      "source_archive": {
+        "repo_path": "data/HSR0015/HSR0015-Body-087/scans/HSR0015-Body-087-Scan-LOD0.zip",
+        "sha256": "dc2a2972f4fefcf50e657b256cbe020a9783dc7dfc563bffaf92f6a1e13c82c1",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0015/HSR0015-Body-087/scans/HSR0015-Body-087-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:50:32+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-017",
+      "dir": "HSR0023/HSR0023-Body-017",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.724765743255743,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "cfe856d9026c6466bb16e76ae3b0e9897d665b7815049d6e7d386f57e6781459",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-017/scans/HSR0023-Body-017-Scan-LOD0.zip",
+        "sha256": "b9df93db9499fba5ad17dc2b54a332287775734291dd392de004701baba70b42",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-017/scans/HSR0023-Body-017-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:51:49+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-029",
+      "dir": "HSR0023/HSR0023-Body-029",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7171409924112239,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "98b2be8c9c2d9a3a7d53bdf0897bc94f95a5391aa80c3577962d78b4971fe7a0",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-029/scans/HSR0023-Body-029-Scan-LOD0.zip",
+        "sha256": "0575d107918ee50c527967896f994eb0a34d23e73863030781f893dfa730af31",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-029/scans/HSR0023-Body-029-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:51:52+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-042",
+      "dir": "HSR0023/HSR0023-Body-042",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7220048611237952,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "e0ae0bbbfddb0762b42354efe76c79614ed312ce2a5d653bbe9c3cfdfebcab7d",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-042/scans/HSR0023-Body-042-Scan-LOD0.zip",
+        "sha256": "9fe1a20a79de31f4910658d8ebf4bd00788d5e4dbc27aba00d1570f3b6fa5760",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-042/scans/HSR0023-Body-042-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:51:49+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-046",
+      "dir": "HSR0023/HSR0023-Body-046",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:04:18+00:00",
+        "notes": "휴대전화를 내려다보는 자세(고개 숙임). 정면 보기에서 Z축 선이 코를 지나고, ROI 가 머리·귀·목·어깨선 포함. 위는 중력 방향 유지(숙인 자세 그대로)."
+      },
+      "camera_distance": 0.8149126888692235,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "4dcaff72c41530acefef8e442d7b05707650ccfc89337c89ab8215f25c9b70d3",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-046/scans/HSR0023-Body-046-Scan-LOD0.zip",
+        "sha256": "188c01117ddd36eed6d624abafdeb30b2ab95e32993c5c52b89d297ac917beac",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-046/scans/HSR0023-Body-046-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:05:10+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-052",
+      "dir": "HSR0023/HSR0023-Body-052",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 통화+컵: 오른쪽 귀·옆머리를 손과 전화기가 가림.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7505080907952626,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "89824de4bce532b7ece9f0623c498746c2ffece2b366504658f3cb4cc8626933",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-052/scans/HSR0023-Body-052-Scan-LOD0.zip",
+        "sha256": "74aa6a1c899011b8826aa88db75b9cf441e0bfb3b930fd76c621af34fd58a74d",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-052/scans/HSR0023-Body-052-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:53:17+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-053",
+      "dir": "HSR0023/HSR0023-Body-053",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 컵으로 마시는 자세: 컵과 손이 얼굴 오른쪽 아래를 가림.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 컵 든 손이 머리 폭 측정에 섞여 중심이 오른쪽으로 치우침 → 정중면 쪽으로 1.2cm 보정. 정면각은 눈이 보이는 시점(head #12)의 눈 좌표로 재추정(대칭면 유효) | [2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7151856309577442,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "d379e9934c36fefd7adfee352bfa519da573a9d71a501bbd0cffe8b218babc7c",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-053/scans/HSR0023-Body-053-Scan-LOD0.zip",
+        "sha256": "85ea54db3f2843a6cb76d36d83859c4f20980e40dc3254089d58e72577c3dc9a",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-053/scans/HSR0023-Body-053-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:53:21+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-054",
+      "dir": "HSR0023/HSR0023-Body-054",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7324815213185771,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "4165d944fea69cf325301ce2e75e7b1d9d6d4e1118d3651f28d965d1338bb440",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-054/scans/HSR0023-Body-054-Scan-LOD0.zip",
+        "sha256": "3a13ae29ef1763f44008288cd8fe5b8f4caab9f232e1bf087498a287d6986620",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-054/scans/HSR0023-Body-054-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:53:17+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-060",
+      "dir": "HSR0023/HSR0023-Body-060",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7208710401871433,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "94d5a69cc4cbce6f4537ec8210236130676e5eb2095753d8de4a74d219a9409a",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-060/scans/HSR0023-Body-060-Scan-LOD0.zip",
+        "sha256": "99560767b0d28f67009f9ae6e3c465bd2478d4e6debe88a6eb9245ffd600a135",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-060/scans/HSR0023-Body-060-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:51:53+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-071",
+      "dir": "HSR0023/HSR0023-Body-071",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "azimuth0_is_front",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 사진 찍는 자세: az0 에서 얼굴이 휴대전화에 가려짐(자세 특성).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용 | [2026-11-11] 사진 찍는 자세: 얼굴 바로 앞의 휴대전화가 az0 시점에서 얼굴을 가려 자동 얼굴 검출 불가. 정면 방향은 미리보기(상단·옆 보기)와 얼굴 대칭면으로 확인"
+      },
+      "camera_distance": 0.7101224878963983,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "765eb1bc3f37c1d46e5db3a02a04d9c6cab0da8023ee44bfb8835c9f935cce68",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-071/scans/HSR0023-Body-071-Scan-LOD0.zip",
+        "sha256": "7f73da7612d5c62fb334fd56301368115bd25774ebea8cf486d809385b402a36",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-071/scans/HSR0023-Body-071-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:13:30+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0023",
+      "pose_id": "HSR0023-Body-077",
+      "dir": "HSR0023/HSR0023-Body-077",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "top_not_cut",
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 위로 든 팔이 여러 시점에서 화면 위 가장자리에 닿음(머리·모발은 화면 안).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용 | [2026-11-11] 위로 든 팔·손(셀카 전화기 포함)이 화면 위 가장자리에 닿음 — 미리보기에서 확인. 머리·모발은 ROI 정점 검사로 화면 안"
+      },
+      "camera_distance": 0.8096354147050526,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "dc5d00a55c36e22d2c2436a9967642a5994a708f32c1086ff4814e39dfe6a3d3",
+      "source_archive": {
+        "repo_path": "data/HSR0023/HSR0023-Body-077/scans/HSR0023-Body-077-Scan-LOD0.zip",
+        "sha256": "ea645840f8ce27e01acc3e5eca41be66e30531acc341ad88649313e88f8bc256",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0023/HSR0023-Body-077/scans/HSR0023-Body-077-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:14:43+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-025",
+      "dir": "HSR0027/HSR0027-Body-025",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 포니테일이 뒤로 나와 y_max 확장, crop 사용"
+      },
+      "camera_distance": 0.8645594619496326,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "fe8066dd8827852f5094f6893e20237804a4a6a6d47b8af2c0dfecf2184ebbf5",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-025/scans/HSR0027-Body-025-Scan-LOD0.zip",
+        "sha256": "a1cc5420827da56e2179e09f22d69dda1670ae9777f3218d6fe32559171cc7e2",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-025/scans/HSR0027-Body-025-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:54:41+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-029",
+      "dir": "HSR0027/HSR0027-Body-029",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 포니테일이 뒤로 나와 y_max 확장, crop 사용"
+      },
+      "camera_distance": 0.8397423455759983,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "dbc6b1ff151ba8fe779d8de11c901198f1a9f9d589ba64b0d0539d0f8be1a97e",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-029/scans/HSR0027-Body-029-Scan-LOD0.zip",
+        "sha256": "c814b747071a4cc97b2510dfd03534172f5ae22dda5fece4f8a94dd3014454d8",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-029/scans/HSR0027-Body-029-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:53:19+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-039",
+      "dir": "HSR0027/HSR0027-Body-039",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 포니테일이 뒤로 나와 y_max 확장, crop 사용"
+      },
+      "camera_distance": 0.8608371339762743,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "9ee13dd253ccf5cc36de88568f385dec9a165204e6d27e8393137dc7acada925",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-039/scans/HSR0027-Body-039-Scan-LOD0.zip",
+        "sha256": "b078c5c33c0b6b54343aff3c267552ba9383aeb51c5868b33632c54cadab15a1",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-039/scans/HSR0027-Body-039-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:56:03+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-048",
+      "dir": "HSR0027/HSR0027-Body-048",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨선까지 내려온 단발 끝을 담도록 z_min·x 확장, crop 사용"
+      },
+      "camera_distance": 0.8528825596212223,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "12b376ee263ad5acbe2a380e1b5b3dbec6df233ac4bb53017f8a6660a14935be",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-048/scans/HSR0027-Body-048-Scan-LOD0.zip",
+        "sha256": "ebc90f30655679c3156255bed8fc157c65dc065031de8f4f981299467e83b893",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-048/scans/HSR0027-Body-048-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:55:54+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-053",
+      "dir": "HSR0027/HSR0027-Body-053",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 어깨선까지 내려온 단발 끝을 담도록 z_min·x 확장, crop 사용"
+      },
+      "camera_distance": 0.8528825596212223,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "5f9a80bff63149d51d03d6ec75563440904cf5eed0a2298ba56255c5c61fc649",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-053/scans/HSR0027-Body-053-Scan-LOD0.zip",
+        "sha256": "08a7139e4cb0e2ec54ec8d2d74b0bfca99dfc29a7f8f1038eeb0bb2f1a3785db",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-053/scans/HSR0027-Body-053-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:56:01+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0027",
+      "pose_id": "HSR0027-Body-068",
+      "dir": "HSR0027/HSR0027-Body-068",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 포니테일이 뒤로 나와 y_max 확장, crop 사용"
+      },
+      "camera_distance": 0.8502373176325321,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "577a0a813552269de02f554c9cf5c6c0993a8e7d8aa30c578f949e5e80f6c818",
+      "source_archive": {
+        "repo_path": "data/HSR0027/HSR0027-Body-068/scans/HSR0027-Body-068-Scan-LOD0.zip",
+        "sha256": "f85bef439e58c8ae3390c1e9deff1d7fe351ddac18087946519dea5caeee7a39",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0027/HSR0027-Body-068/scans/HSR0027-Body-068-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:54:39+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-021",
+      "dir": "HSR0028/HSR0028-Body-021",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "bf1595be0fa2a399cfa7714097785548d2d873920176b3749e17258e1b1f2eb4",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-021/scans/HSR0028-Body-021-Scan-LOD0.zip",
+        "sha256": "b929c8db06410c8e34ee94401755c8d801bc0c66b5b3a3d7d127f5d35ce649cc",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-021/scans/HSR0028-Body-021-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:14:36+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-028",
+      "dir": "HSR0028/HSR0028-Body-028",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "exposure_consistency"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "7d6119ebee2653bf682db580c3c640e58855f2eb08e1c28ad2a65a3a4529dbac",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-028/scans/HSR0028-Body-028-Scan-LOD0.zip",
+        "sha256": "fd0a97f7af6c9a003bae890dcc03687f51dd9e2930341a7e2afd1afd39efeb2b",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-028/scans/HSR0028-Body-028-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:14:35+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-052",
+      "dir": "HSR0028/HSR0028-Body-052",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "ae295d4d017e868c8c136dd5d090fcfdf55714bfdfe272e991a7344cfe8b99f7",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-052/scans/HSR0028-Body-052-Scan-LOD0.zip",
+        "sha256": "dee519b054c71094bb9087931662825185b0654a88ec1c27510a770f7079d219",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-052/scans/HSR0028-Body-052-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:14:36+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-053",
+      "dir": "HSR0028/HSR0028-Body-053",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "ea3e11c1f58b1bee6f7feb9456e27ad5dd29479026d998f4a7317255a1b9f955",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-053/scans/HSR0028-Body-053-Scan-LOD0.zip",
+        "sha256": "7b04cb59d563a77afb34ac9277b3e3b4da4c2a93a3147b54405795f9a9fc1620",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-053/scans/HSR0028-Body-053-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:15:41+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-055",
+      "dir": "HSR0028/HSR0028-Body-055",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘. 사진 찍는 자세: az0 에서 얼굴 일부가 휴대전화에 가려짐.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 얼굴 앞 휴대전화로 자동 추정 실패 → 눈이 보이는 head #13 의 눈 좌표로 재추정. 긴 생머리 끝까지 ROI 확장, crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "7624b6752641b4fa709f7e85400c340b53d61b5c65fc35fcbb4cff851bbdf885",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-055/scans/HSR0028-Body-055-Scan-LOD0.zip",
+        "sha256": "c0f3c4f8a557ff52b7c698612fe796b106d2078546a32d6cf5df9cdb8d3a934d",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-055/scans/HSR0028-Body-055-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:15:43+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-058",
+      "dir": "HSR0028/HSR0028-Body-058",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "a16ea3cbd3b3efd0a7122af51edecba794f6c04944f430469187bf610e5efb99",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-058/scans/HSR0028-Body-058-Scan-LOD0.zip",
+        "sha256": "036b1ae19f7520dae8d6c8289fd197250f0442f84876b88a7ef1202321abe902",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-058/scans/HSR0028-Body-058-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:15:35+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-062",
+      "dir": "HSR0028/HSR0028-Body-062",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "920ef8944916413978c0594f3ec6567a53f1268f210c367f819a6c2111f4533c",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-062/scans/HSR0028-Body-062-Scan-LOD0.zip",
+        "sha256": "4ab28160a43ef3286930b44fc36e243b0fea4c71b4d27301774a8e2f6c43a614",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-062/scans/HSR0028-Body-062-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:15:43+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0028",
+      "pose_id": "HSR0028-Body-093",
+      "dir": "HSR0028/HSR0028-Body-093",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 등까지 내려오는 긴 생머리 전체를 담느라 카메라 거리가 멀어(r≈1.5) 머리가 화면 높이의 약 1/6 로 작게 잡힘.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 등까지 내려오는 긴 생머리 끝(z≈-0.42)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 1.5142720704067887,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "9597bf05538ec3b6c795e02d2fdf3f0ce8259319b15cca469f764d323278fd15",
+      "source_archive": {
+        "repo_path": "data/HSR0028/HSR0028-Body-093/scans/HSR0028-Body-093-Scan-LOD0.zip",
+        "sha256": "24311cad26ebf008b48a294632d00355588deb21373d10d6efd234e3e496946e",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0028/HSR0028-Body-093/scans/HSR0028-Body-093-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:16:47+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-004",
+      "dir": "HSR0040/HSR0040-Body-004",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8181490682586943,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "0b0b84666cd8d868469c3ab2d6ac3f05dca187494fbe5da6838b42ada0e771b7",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-004/scans/HSR0040-Body-004-Scan-LOD0.zip",
+        "sha256": "a5ea5bf1429ecc09fd52685789846ab61dd51ae19edecd5619474927044506af",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-004/scans/HSR0040-Body-004-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:59:38+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-012",
+      "dir": "HSR0040/HSR0040-Body-012",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 통화 자세: 오른쪽 귀·옆머리를 손과 전화기가 가림.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8890893226770674,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "b649f761cbf7f3ef423220d786c2905eae6e91b88186befdef67dd7f8f0f7e1a",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-012/scans/HSR0040-Body-012-Scan-LOD0.zip",
+        "sha256": "8fa8a999ca3c49e6eed973e2b4b09baca2b2ed3343367ac362cc90119a81bb6e",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-012/scans/HSR0040-Body-012-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:59:20+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-023",
+      "dir": "HSR0040/HSR0040-Body-023",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - contact sheet 및 원본 해상도 이미지 직접 열람",
+        "reviewed_at": "2026-11-11T03:11:25+00:00",
+        "notes": "확인: 15칸 배치(행=고도각 0/30/60, 열=수평각 0/72/144/216/288)와 라벨 일치. az0·el0 은 정면 얼굴, az72 는 피험자의 왼쪽 옆얼굴, az144/216 은 뒤통수, az288 은 오른쪽 옆얼굴. 빈/검은/뒤집힌 화면 없음. 모든 시점에서 정수리·뒤통수·모발·양쪽 귀·목·어깨선이 화면 안에 있고 위쪽 여백 충분. 고도각 30/60 에서는 crop 된 상반신(팔짱 낀 팔 포함)까지만 보이고 절단면 내부는 보이지 않음(절단 경계는 아래 윤곽으로 보임). 조명은 균일 환경광이라 과도한 그림자 없음. 한계(원본 스캔 그대로, 보정하지 않음): 정수리에 텍스처가 뭉개진 회색 패치, 팔짱 낀 손과 소매 사이에 흐릿한 텍스처, 머리카락은 뭉친 덩어리 형상. 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인",
+        "carried_over": {
+          "reason": "재렌더링한 이미지가 검수했던 이미지와 사실상 동일해 기록 유지",
+          "equivalent": true,
+          "max_abs_pixel_difference": 1,
+          "max_fraction_of_differing_pixels": 1.25e-05
+        }
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 미리보기 육안 확인",
+        "reviewed_at": "2026-11-11T02:45:51+00:00",
+        "notes": "review_sheet: 정면 보기에서 Z축(파란 선)이 코·인중·턱 중앙을 지나고 양쪽 귀가 비슷하게 보임. 상단 보기에서 Y축(초록 선)이 코끝~뒤통수 중앙을 지남. 노란 ROI 상자가 모발 전체·양쪽 귀·목·어깨선을 포함. 자르지 않으면 고도각 60도에서 다리·신발까지 보여 crop 사용(auto 높이: 고도각 0도 화면에는 절단 경계가 들어오지 않음). 사람(연구자)의 재확인 권장."
+      },
+      "camera_distance": 0.8184858302751645,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "1e939474ccc2e4f91b6a2ba05b45491bd843f06e857a56882123c431815e8f1f",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-023/scans/HSR0040-Body-023-Scan-LOD0.zip",
+        "sha256": "3b10f004b4c0fca9f7bc2c1fe191c58736b42a088ee0a366f71d3169eafcde80",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-023/scans/HSR0040-Body-023-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:04:05+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-027",
+      "dir": "HSR0040/HSR0040-Body-027",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8178508429615949,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "71a93a5d30cd24cd05c2d0311fafbc737711a6e6715dd364615178475c09672b",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-027/scans/HSR0040-Body-027-Scan-LOD0.zip",
+        "sha256": "28603f9d6d00a37a6498e25178545922ea151f6388faf14d28feaa480f1c0912",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-027/scans/HSR0040-Body-027-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:57:56+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-032",
+      "dir": "HSR0040/HSR0040-Body-032",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8086196649851484,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "8c02cea025894b8dcba754fe3b0b0bf8506d0d0865257a8945d800a5d0a3ec65",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-032/scans/HSR0040-Body-032-Scan-LOD0.zip",
+        "sha256": "a63becc608b6247a5819380c1d7f508bbf3e49c0f46ab6700fff8275481b7f78",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-032/scans/HSR0040-Body-032-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:01:02+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-037",
+      "dir": "HSR0040/HSR0040-Body-037",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.815183817167856,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "aa5244701f85f160faa7cebddefd13470d974f86662d58ae34050693cb296611",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-037/scans/HSR0040-Body-037-Scan-LOD0.zip",
+        "sha256": "b32826a65547f9000fec66c86f317b6987084936b29889e14b6b87388f999ae2",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-037/scans/HSR0040-Body-037-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:00:37+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-039",
+      "dir": "HSR0040/HSR0040-Body-039",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 손 흔드는 자세: 손이 머리 옆에 보임.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8144224289791877,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "3154c95cea27d47aa63a39209f15fcfed28355d83d5ef94de16cc3132429c6bf",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-039/scans/HSR0040-Body-039-Scan-LOD0.zip",
+        "sha256": "dafd8693e3bf70ad8d5a00777cb71e454f035904f090923ca6c4ea59c33c08d9",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-039/scans/HSR0040-Body-039-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:59:38+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-074",
+      "dir": "HSR0040/HSR0040-Body-074",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8061913152281401,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "1606377316830c0203f2623c9e09131aec28d31919c6c7622acc73253d56fab6",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-074/scans/HSR0040-Body-074-Scan-LOD0.zip",
+        "sha256": "acaefeefd4f7020e89fb944176cc5883f9580d26af9d0c5d190ac81009baedc2",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-074/scans/HSR0040-Body-074-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T05:59:18+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0040",
+      "pose_id": "HSR0040-Body-086",
+      "dir": "HSR0040/HSR0040-Body-086",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8171972198766949,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "ad63b9f8e2bbaecd6b30e25e5fed95735de96e6b3ccb73752d0c13c00e654a87",
+      "source_archive": {
+        "repo_path": "data/HSR0040/HSR0040-Body-086/scans/HSR0040-Body-086-Scan-LOD0.zip",
+        "sha256": "547ceb0085aa3f577bcdb4a90e46b2868f562848ef16de0a9889a3b4971efbea",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0040/HSR0040-Body-086/scans/HSR0040-Body-086-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:02:14+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0042",
+      "pose_id": "HSR0042-Body-014",
+      "dir": "HSR0042/HSR0042-Body-014",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8942397411919925,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "f8cc58a0b65f6fb1d56e66cd1b22384e7659330dbce126a0b5ad3fce005ae23a",
+      "source_archive": {
+        "repo_path": "data/HSR0042/HSR0042-Body-014/scans/HSR0042-Body-014-Scan-LOD0.zip",
+        "sha256": "4dfeef27b45d6cd8805b9459080354a3f9bcf1343977e76580ff96ebdbd3746f",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0042/HSR0042-Body-014/scans/HSR0042-Body-014-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:01:52+00:00",
+      "split": "val"
+    },
+    {
+      "person_id": "HSR0042",
+      "pose_id": "HSR0042-Body-018",
+      "dir": "HSR0042/HSR0042-Body-018",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9007062521372815,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "e170e0cc40f022492175705946f524d5ff5ff80e466270063537515f99dcb2d4",
+      "source_archive": {
+        "repo_path": "data/HSR0042/HSR0042-Body-018/scans/HSR0042-Body-018-Scan-LOD0.zip",
+        "sha256": "bd0fdfe6f30beef79542de5a4f6702257cf52d8db85b58a44b959f45e146c8a8",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0042/HSR0042-Body-018/scans/HSR0042-Body-018-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:16:54+00:00",
+      "split": "val"
+    },
+    {
+      "person_id": "HSR0042",
+      "pose_id": "HSR0042-Body-043",
+      "dir": "HSR0042/HSR0042-Body-043",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "top_not_cut",
+        "side_edges_clear_around_head"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 텍스처 없는 상의 부분을 피하려고 crop 을 z=-0.26 으로 올림 → 고도각 0도에서도 짧게 잘린 상반신의 절단 경계가 보임. 위로 든 팔이 화면 위에 닿음.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 텍스처 없는 면(u1_v0)이 z=-0.27 아래 상의에 있어 그 위에서 crop(고도각 0도에서도 절단 경계가 보임) | [2026-11-11] 위로 든 팔·손(셀카 전화기 포함)이 화면 위 가장자리에 닿음 — 미리보기에서 확인. 머리·모발은 ROI 정점 검사로 화면 안"
+      },
+      "camera_distance": 0.9505808579403864,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "606497032c5ff4c3e18b2a21090deba344e5ee03476256de8d749d2f65244682",
+      "source_archive": {
+        "repo_path": "data/HSR0042/HSR0042-Body-043/scans/HSR0042-Body-043-Scan-LOD0.zip",
+        "sha256": "544c0bc39cf4157c58654278b06394ac97bf8f778aaa48204f7f707530f02eb9",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0042/HSR0042-Body-043/scans/HSR0042-Body-043-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:16:46+00:00",
+      "split": "val"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-014",
+      "dir": "HSR0081/HSR0081-Body-014",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "a6d686d1cd51123afe7c6a23fa30b0a53d8735dc2e0ff979cc248707a6859bf3",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-014/scans/HSR0081-Body-014-Scan-LOD0.zip",
+        "sha256": "29fd06567b4beded5c65e5ac357010e4196245592f32a36dcc11aa4d13d5ad8c",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-014/scans/HSR0081-Body-014-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:16:51+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-020",
+      "dir": "HSR0081/HSR0081-Body-020",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "a0c84791cab5bb54967ead40636f97d7aaaa714e94ed8ccd4c2d392be8e8094f",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-020/scans/HSR0081-Body-020-Scan-LOD0.zip",
+        "sha256": "647c33c8395b47cf5f2a67e81582ddce523b86d00e167ad3ef3b7cbe4928444e",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-020/scans/HSR0081-Body-020-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:17:53+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-033",
+      "dir": "HSR0081/HSR0081-Body-033",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "e1d9c5a21af69a6edd954daacdf208b30c31ffa06be0fc6fbc35fe0453a3aae6",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-033/scans/HSR0081-Body-033-Scan-LOD0.zip",
+        "sha256": "fb8755edcb70a82a5df53d0cf5ede56fac59c0ffc34276d1a7f7ff7bedec4101",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-033/scans/HSR0081-Body-033-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:17:55+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-034",
+      "dir": "HSR0081/HSR0081-Body-034",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "1212714e698f3019ec440b16a56f429a6774e2da4b99fed67dc0ad7ea794ae64",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-034/scans/HSR0081-Body-034-Scan-LOD0.zip",
+        "sha256": "5af2c2858af65663f38ceb4e5b56439c451a688845a75107742ce4ea47911725",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-034/scans/HSR0081-Body-034-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:17:53+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-050",
+      "dir": "HSR0081/HSR0081-Body-050",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "94ccec5db2bb378ca17bf8ec5388bf5998fcd75d7b76a79a609a245459944294",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-050/scans/HSR0081-Body-050-Scan-LOD0.zip",
+        "sha256": "e4f6ddb21b164dc2794eb7525ecfcc8c9e9b03e40e865d936201ee70fa60a467",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-050/scans/HSR0081-Body-050-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:17:53+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-054",
+      "dir": "HSR0081/HSR0081-Body-054",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 엉덩이까지 내려오는 긴 웨이브 머리 끝(z≈-0.6)까지 ROI 확장(목적: 머리카락 형태), crop 사용"
+      },
+      "camera_distance": 2.079418323898303,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "afb52bf8869fa9356f7eacde3449dfefa850729f1b2d3684dbd74d3c684cafe9",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-054/scans/HSR0081-Body-054-Scan-LOD0.zip",
+        "sha256": "7b83a44e9310e9cf2a19be0ada7ce1bc2ac1bba6b1413e72861811895f84cb9a",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-054/scans/HSR0081-Body-054-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:04+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0081",
+      "pose_id": "HSR0081-Body-074",
+      "dir": "HSR0081/HSR0081-Body-074",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 엉덩이까지 오는 긴 머리 전체를 담느라 카메라 거리가 멀어(r≈1.6~2.1) 머리가 화면 높이의 약 1/8 로 작게 잡힘. 모발 텍스처에 회색 얼룩(원본 스캔).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 긴 포니테일 끝(z≈-0.45)까지 ROI 확장, crop 사용"
+      },
+      "camera_distance": 1.6276049610009116,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "699ffe6b329b312a68435c7214d46b3965d950264204feef3dc454241b8f3a37",
+      "source_archive": {
+        "repo_path": "data/HSR0081/HSR0081-Body-074/scans/HSR0081-Body-074-Scan-LOD0.zip",
+        "sha256": "1c55bc0cec23583c1fb9dff9a6f449e6ccd582d6d5503a6dddc5aa868c8f45cd",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0081/HSR0081-Body-074/scans/HSR0081-Body-074-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:08+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-019",
+      "dir": "HSR0102/HSR0102-Body-019",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9374743934274888,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "fac1991739cd429d5d280f022bf3150852af8d65d3ed4b8e529a6be90c913cf0",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-019/scans/HSR0102-Body-019-Scan-LOD0.zip",
+        "sha256": "20cdd8cc17bcd94863ed1a670b6a0ede56198069fc5ae31a46e6d511ab665383",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-019/scans/HSR0102-Body-019-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:02:55+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-020",
+      "dir": "HSR0102/HSR0102-Body-020",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9807450763308706,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "ebb272008c1667bca31ff24caf2918db0d50ff4528608bb83c2f37ff9a047d4c",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-020/scans/HSR0102-Body-020-Scan-LOD0.zip",
+        "sha256": "2b55963ed9e203443ae979328893e9f7ef71fa8568778af205836bcd0a41021e",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-020/scans/HSR0102-Body-020-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:05:46+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-022",
+      "dir": "HSR0102/HSR0102-Body-022",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "azimuth0_is_front",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임). 사진 찍는 자세: az0 에서 얼굴이 휴대전화에 가려짐(자세 특성).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 곱슬머리 폭에 맞춰 ROI 확장, crop 사용 | [2026-11-11] 사진 찍는 자세: 얼굴 바로 앞의 휴대전화가 az0 시점에서 얼굴을 가려 자동 얼굴 검출 불가. 정면 방향은 미리보기(상단·옆 보기)와 얼굴 대칭면으로 확인"
+      },
+      "camera_distance": 0.9791889011645465,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "e943ba490da2b49b9c7d1ceab75d7792f473c125434f8cbe935a1a150fee3b4b",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-022/scans/HSR0102-Body-022-Scan-LOD0.zip",
+        "sha256": "d46a46ade0322a646323905fe2ff6b5a0412e8cc388210dd911bbb15d696094f",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-022/scans/HSR0102-Body-022-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:10+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-034",
+      "dir": "HSR0102/HSR0102-Body-034",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9668459562535302,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "cb72f5c1f35197710de99ddcd87638724b304d7e4899000ba428350ec50deccb",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip",
+        "sha256": "c76f0138a32ffdde018a3b76ccefc836b8fa8cb45bc6897d547220764b81e538",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:04:23+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-040",
+      "dir": "HSR0102/HSR0102-Body-040",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "side_edges_clear_around_head",
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9800968935578944,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "376ab62e3c86a17b0e22b255f1d19bacb1dbe6b123e171b2718681bbce0e6834",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-040/scans/HSR0102-Body-040-Scan-LOD0.zip",
+        "sha256": "109154f88d6f5085a73bc5d0bb7f6dfcd0b1d71883253a38496f0e5350aafbea",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-040/scans/HSR0102-Body-040-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:04:11+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-042",
+      "dir": "HSR0102/HSR0102-Body-042",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 1.0105069921847818,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "6c315e0acff6c1f756c159cbea621b67a326af2392dd815fe491e7023a00642d",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-042/scans/HSR0102-Body-042-Scan-LOD0.zip",
+        "sha256": "b1edb28d5f6e3eadc5e28bdf46cc184ee15f6e19f2489c55ff5ae15c29518078",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-042/scans/HSR0102-Body-042-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:07:05+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-043",
+      "dir": "HSR0102/HSR0102-Body-043",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9767909668939214,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "a6a5e323e1e3f9ef1c533e9e3d3f514ae899be2b93cf91ad53891aec25123787",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-043/scans/HSR0102-Body-043-Scan-LOD0.zip",
+        "sha256": "2ee648d2071b3a9fe1585dd6e1f2b4f52aed974a573c0c7995f10a7132e493b6",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-043/scans/HSR0102-Body-043-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:06:42+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-048",
+      "dir": "HSR0102/HSR0102-Body-048",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임). 손 흔드는 자세: 손이 얼굴 옆에 보임.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] 자동 ROI 가 풍성한 곱슬머리보다 작음 → 다른 자세와 같은 크기로 확장, crop 사용"
+      },
+      "camera_distance": 0.9890615907676891,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "966978a7e0cd5985c03995f8a68bee6d61566b3e1eaed854ee43d147e5ae7d9c",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-048/scans/HSR0102-Body-048-Scan-LOD0.zip",
+        "sha256": "e638b0c4fd64165c197ef044daf88be875454255ef580dd2cb67890a0ad1b7f1",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-048/scans/HSR0102-Body-048-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:05:45+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0102",
+      "pose_id": "HSR0102-Body-052",
+      "dir": "HSR0102/HSR0102-Body-052",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 무늬 헤어밴드 착용(모자 아님, 머리카락 형태는 보임).",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9888932708178607,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "cd55825807a6686fa8d5bcadca66295bf6c34d9976cd3a290413c1a3568eb258",
+      "source_archive": {
+        "repo_path": "data/HSR0102/HSR0102-Body-052/scans/HSR0102-Body-052-Scan-LOD0.zip",
+        "sha256": "b24e0d3bb5255d96f622eba3379ed8b59efd98cdabc0c47da47cca3a54d3b7a5",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0102/HSR0102-Body-052/scans/HSR0102-Body-052-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:05:26+00:00",
+      "split": "test"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-007",
+      "dir": "HSR0112/HSR0112-Body-007",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 패딩의 털 후드가 목 뒤를 감쌈(쓰지는 않음). 고개 숙임.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.9274435003261368,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "cc26270f7024753084782fbd809e5fb9645022ff867733f6640c0f7d4fddd639",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-007/scans/HSR0112-Body-007-Scan-LOD0.zip",
+        "sha256": "9a49ed31e9315dc36c20327a08aa27efdb676f7b713cf86c1865bfcaba88b958",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-007/scans/HSR0112-Body-007-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:11+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-018",
+      "dir": "HSR0112/HSR0112-Body-018",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - contact sheet 직접 열람",
+        "reviewed_at": "2026-11-11T03:11:25+00:00",
+        "notes": "확인: 15칸 배치·라벨 일치, az0·el0 정면 얼굴(머리가 피험자의 오른쪽 어깨 쪽으로 약 9.5도 기울어 있음: 중력 방향을 위로 둔 설정이라 기울어진 자세 그대로), az72 는 왼쪽 옆얼굴, az144/216 뒤, az288 오른쪽. 정수리·뒤통수·모발·양쪽 귀·목·어깨선이 모든 시점에서 화면 안. 빈/검은/뒤집힌 화면 없음. 고도각 30/60 에서는 crop 으로 위팔이 잘린 경계가 윤곽으로 보임(절단면 내부는 안 보임). 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인",
+        "carried_over": {
+          "reason": "재렌더링한 이미지가 검수했던 이미지와 사실상 동일해 기록 유지",
+          "equivalent": true,
+          "max_abs_pixel_difference": 1,
+          "max_fraction_of_differing_pixels": 8.333333333333334e-06
+        }
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 미리보기 육안 확인",
+        "reviewed_at": "2026-11-11T03:00:41+00:00",
+        "notes": "정면 보기에서 얼굴이 정면이고 양쪽 귀가 비슷하게 보임. 머리가 사람의 오른쪽 어깨 쪽으로 약 9.5도 기울어 있어 Z축 선이 코허리는 지나지만 턱은 선에서 벗어남(중력 방향을 위로 유지: 기울어진 자세 그대로 렌더링). ROI 가 모발·양쪽 귀·목·어깨선 포함. crop 사용. 사람(연구자)의 재확인 권장."
+      },
+      "camera_distance": 0.7484168777482472,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "1a48aa071ffc91bed45660186d7e2bcf498052daf01806690f7e3356b008f085",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-018/scans/HSR0112-Body-018-Scan-LOD0.zip",
+        "sha256": "a8d8f86d8763c4377071b5478495fc449ca1848e1113acf5b7527ec12356dcf1",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-018/scans/HSR0112-Body-018-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:08:00+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-023",
+      "dir": "HSR0112/HSR0112-Body-023",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 통화 자세: 왼쪽 귀·옆머리를 손과 전화기가 가림.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7561432097086267,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "feb6253c1d70c9aadc249c84c7289937a78f2f9212e3d5c092da4b0730617a06",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-023/scans/HSR0112-Body-023-Scan-LOD0.zip",
+        "sha256": "9fcd9c4b08f2b5b350bb55af3575a9f6fca5586a5b5b791b13eb8ee510c0a1cc",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-023/scans/HSR0112-Body-023-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:07:05+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-036",
+      "dir": "HSR0112/HSR0112-Body-036",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7390807138247544,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "947255502cf0468d24186ba10342bb84bd7e709b43863d44ddcb2a3f85085c48",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-036/scans/HSR0112-Body-036-Scan-LOD0.zip",
+        "sha256": "93fd4239f514c80fc760157b70a983dbe588899a728ff1431fcc3f6ec7e03e2f",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-036/scans/HSR0112-Body-036-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:06:44+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-044",
+      "dir": "HSR0112/HSR0112-Body-044",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7344059534544645,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "2d5fb4e709429904dbf375fb2a383e1fff0fa3f9d4d903c04c2181fe7a79db1e",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-044/scans/HSR0112-Body-044-Scan-LOD0.zip",
+        "sha256": "a9f77daa69087eca8493b243134a9dacac9cd39ebe36576daf310565672c885c",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-044/scans/HSR0112-Body-044-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:09:17+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-045",
+      "dir": "HSR0112/HSR0112-Body-045",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7394070766810621,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "83645ff58902214ae466c2557b4d4bf40b407013f4251245b5e70b52a925fac1",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-045/scans/HSR0112-Body-045-Scan-LOD0.zip",
+        "sha256": "db7c8ab6c0c80e0d18fe38b1df7f3d9eb75bdc2ee5e9b74ef4f0e0640bca27af",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-045/scans/HSR0112-Body-045-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:08:51+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-062",
+      "dir": "HSR0112/HSR0112-Body-062",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7257090957924326,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "b54d07d04d807f859200b9de9260405ef6e6271585e8e26ad46ae773a3c6bdc7",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-062/scans/HSR0112-Body-062-Scan-LOD0.zip",
+        "sha256": "0cf1eafc337ff66da0891c6c6ff5202c4c92365f00587ae5dad530f08977b2e7",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-062/scans/HSR0112-Body-062-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:55+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-065",
+      "dir": "HSR0112/HSR0112-Body-065",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장. 컵으로 마시는 자세: 컵과 손이 입 주변을 가림.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.7485010920472611,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "87310a8561e24d786eb5fd817afba00d982b8a2fe8020c1b0b2e5cfde39460d1",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-065/scans/HSR0112-Body-065-Scan-LOD0.zip",
+        "sha256": "ac16aec09bd8d98b6a16bcd10ee4ff2396d46d289fbf4775bdfaf1bcf092d51d",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-065/scans/HSR0112-Body-065-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:19:59+00:00",
+      "split": "train"
+    },
+    {
+      "person_id": "HSR0112",
+      "pose_id": "HSR0112-Body-074",
+      "dir": "HSR0112/HSR0112-Body-074",
+      "images": [
+        "images/az000_el00.png",
+        "images/az072_el00.png",
+        "images/az144_el00.png",
+        "images/az216_el00.png",
+        "images/az288_el00.png",
+        "images/az000_el30.png",
+        "images/az072_el30.png",
+        "images/az144_el30.png",
+        "images/az216_el30.png",
+        "images/az288_el30.png",
+        "images/az000_el60.png",
+        "images/az072_el60.png",
+        "images/az144_el60.png",
+        "images/az216_el60.png",
+        "images/az288_el60.png"
+      ],
+      "image_count": 15,
+      "cameras": "cameras.json",
+      "qa_passed": true,
+      "qa_warnings": [
+        "scan_backfaces_visible",
+        "exposure_consistency"
+      ],
+      "visual_review": {
+        "done": true,
+        "reviewer": "Claude(AI) - 최종 이미지 축소 모음 열람",
+        "reviewed_at": "2026-11-11T06:22:02+00:00",
+        "notes": "축소 모음(work/_review/final_*.jpg, result_HSR0040.jpg: 시점당 112×149px, 5×3 배치)으로 확인: 15칸 배치가 맞고 az0·el0 이 정면, az72 는 피험자의 왼쪽, az144/216 은 뒤, az288 은 오른쪽. 빈/검은/뒤집힌 화면 없음. 모발 전체·귀·목이 모든 시점에서 화면 안. 고도각 30/60 은 crop 된 상반신까지만 보임. 원본 해상도 전수 확인은 아니므로 사람(연구자)의 재확인 권장.",
+        "how": "contact_sheet.jpg 와 개별 이미지를 직접 열어 확인"
+      },
+      "config_review": {
+        "approved": true,
+        "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+        "reviewed_at": "2026-11-11T05:47:59+00:00",
+        "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+        "edit_notes": "[2026-11-11] crop 사용"
+      },
+      "camera_distance": 0.8823959550047907,
+      "crop_enabled": true,
+      "render_inputs_fingerprint": "5c7096661f62d1f636e461fc6a8c0eb02af6cb305d21efef307e24fdb2df04e3",
+      "source_archive": {
+        "repo_path": "data/HSR0112/HSR0112-Body-074/scans/HSR0112-Body-074-Scan-LOD0.zip",
+        "sha256": "60fce0364753bd2e53da8ef3105c3fae637c9720381485cc0b17fc2d4ac75ac9",
+        "url": "https://huggingface.co/datasets/digitalrealitylab/HSRD-100/resolve/9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a/data/HSR0112/HSR0112-Body-074/scans/HSR0112-Body-074-Scan-LOD0.zip"
+      },
+      "rendered_at": "2026-11-11T06:10:08+00:00",
+      "split": "train"
+    }
+  ],
+  "excluded": [
+    {
+      "pose_id": "HSR0015-Body-009",
+      "person_id": "HSR0015",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0015-Body-015",
+      "person_id": "HSR0015",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0027-Body-004",
+      "person_id": "HSR0027",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0027-Body-006",
+      "person_id": "HSR0027",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0027-Body-015",
+      "person_id": "HSR0027",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0027-Body-038",
+      "person_id": "HSR0027",
+      "reason": "배포 ZIP 에 텍스처가 없는 재질(u1_v0)의 면이 얼굴 왼쪽·귀·목 부위에 있음 → 머리를 색으로 렌더링할 수 없음",
+      "reviewer": "Claude(AI) - 미리보기 확인",
+      "reviewed_at": "2026-11-11T05:40:01+00:00"
+    },
+    {
+      "pose_id": "HSR0028-Body-010",
+      "person_id": "HSR0028",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0028-Body-016",
+      "person_id": "HSR0028",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0040-Body-031",
+      "person_id": "HSR0040",
+      "reason": "배포 ZIP 에 텍스처가 없는 재질(u1_v0)이 얼굴 높이로 든 휴대전화(셀카 자세)여서 화면에 보이며 crop 으로 깔끔하게 제거할 수 없음",
+      "reviewer": "Claude(AI) - 미리보기 확인",
+      "reviewed_at": "2026-11-11T05:43:47+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-002",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-003",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-007",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-008",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-010",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-011",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0042-Body-045",
+      "person_id": "HSR0042",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0081-Body-004",
+      "person_id": "HSR0081",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0081-Body-010",
+      "person_id": "HSR0081",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0081-Body-011",
+      "person_id": "HSR0081",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0102-Body-073",
+      "person_id": "HSR0102",
+      "reason": "배포 ZIP 에 텍스처가 없는 재질(u1_v0)의 면이 팔·상의 옆면에 머리 ROI 높이(z=-0.16)까지 걸쳐 있어 crop 으로 제거할 수 없음",
+      "reviewer": "Claude(AI) - 미리보기 확인",
+      "reviewed_at": "2026-11-11T05:43:12+00:00"
+    },
+    {
+      "pose_id": "HSR0112-Body-078",
+      "person_id": "HSR0112",
+      "reason": "배포 ZIP 에 텍스처가 없는 재질(u1_v0)의 면이 어깨·소매(z=-0.12 까지)에 있어 crop 으로 제거할 수 없음",
+      "reviewer": "Claude(AI) - 미리보기 확인",
+      "reviewed_at": "2026-11-11T05:43:47+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-002",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-006",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-007",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-009",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-010",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-011",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-012",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-013",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-014",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    },
+    {
+      "pose_id": "HSR0161-Body-015",
+      "person_id": "HSR0161",
+      "reason": "모자 착용(비니·버킷햇·수영모)으로 머리카락 형태가 가려짐 — 사용자 지시에 따라 제외",
+      "reviewer": "사용자 지시(2026-11-11) / Claude(AI)가 미리보기 렌더로 모자 착용 확인",
+      "reviewed_at": "2026-11-11T05:39:06+00:00"
+    }
+  ]
+}

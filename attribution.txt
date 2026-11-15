@@ -1,0 +1,247 @@
+출처 표시 (Attribution)
+============================================================
+
+이 폴더의 이미지는 아래 데이터셋의 3D 인체 스캔을 렌더링해 만든 2차 저작물입니다.
+The images in this folder are renderings derived from the 3D human scans of the dataset below.
+
+  데이터셋 / Dataset : HSRD-100: 100 High-Quality 3D Human Scans Dataset, Digital Reality Lab (2025)
+  배포처 / Source     : https://huggingface.co/datasets/digitalrealitylab/HSRD-100
+  저장소 커밋 / Revision : 9cc5e9c138dd310dc88c95c80e5db0a3ecb7971a
+  사용한 파일 종류     : data/<person_id>/<pose_id>/scans/<pose_id>-Scan-LOD0.zip
+  라이선스 / License  : CC BY 4.0  (https://creativecommons.org/licenses/by/4.0/)
+
+변경 사항 (Changes made)
+------------------------------------------------------------
+  * 원본 3D 메시와 색 텍스처는 수정하지 않았습니다.
+  * 전신 스캔을 머리·목 중심의 15개 고정 시점(수평각 5 × 고도각 3)에서 Blender Cycles 로
+    렌더링해 1200×1600 PNG 이미지를 만들었습니다. 조명·배경·카메라는 이 프로젝트가 정한 것입니다.
+  * 설정에 따라 렌더링용 '복제' 메시에서 머리 아래쪽 몸통을 잘라낸 경우가 있습니다
+    (모델별 model_config.json 의 resolved.crop 참고).
+  * 얼굴 보정, 모발 생성, AI 보간, 이미지별 후처리는 하지 않았습니다.
+
+인용 (Citation)
+------------------------------------------------------------
+  @dataset{HSRD-100_2025,
+    title={HSRD-100: 100 High-Quality 3D Human Scans Dataset},
+    author={Digital Reality Lab},
+    year={2025},
+    url={https://huggingface.co/datasets/digitalrealitylab/HSRD-100},
+    license={cc-by-4.0}
+  }
+
+주의 (Notes)
+------------------------------------------------------------
+  * 원 데이터셋 카드는 생체 인식(개인 식별), 의료 진단, 감시 목적의 사용을 범위 밖으로 명시합니다.
+  * 이 렌더링 규격은 이 프로젝트의 자체 규격이며 실제 촬영 장비나 AI Hub 규격을 재현한 것이 아닙니다.
+
+사용한 스캔 (69개)
+------------------------------------------------------------
+  HSR0015-Body-023  (person HSR0015)
+      data/HSR0015/HSR0015-Body-023/scans/HSR0015-Body-023-Scan-LOD0.zip
+      sha256 4d101ad5bf0a59f3e210ce193c4b01ec178cbf4e7800c71964fa5e2ee91937cf
+  HSR0015-Body-032  (person HSR0015)
+      data/HSR0015/HSR0015-Body-032/scans/HSR0015-Body-032-Scan-LOD0.zip
+      sha256 f994a8f1bd2d8c10c186a99bd34fde12f28651085d1864567b207b72b100e746
+  HSR0015-Body-035  (person HSR0015)
+      data/HSR0015/HSR0015-Body-035/scans/HSR0015-Body-035-Scan-LOD0.zip
+      sha256 32ec447f0d37394ab7b884c214ff8a110825e6be0ddacbb2ab4674cf2e1ad822
+  HSR0015-Body-049  (person HSR0015)
+      data/HSR0015/HSR0015-Body-049/scans/HSR0015-Body-049-Scan-LOD0.zip
+      sha256 29ee15369555adc87aeb2cacc5ff96e4dbc29e5043453b8892556d2aaf446b05
+  HSR0015-Body-054  (person HSR0015)
+      data/HSR0015/HSR0015-Body-054/scans/HSR0015-Body-054-Scan-LOD0.zip
+      sha256 14573f7a832dfe4d3b60b96b0fd3b1c469c3fd1abf81761370ab9d9d08cbf1ea
+  HSR0015-Body-069  (person HSR0015)
+      data/HSR0015/HSR0015-Body-069/scans/HSR0015-Body-069-Scan-LOD0.zip
+      sha256 2c3de67af011b55ec81b70c4c4044b0d1831e6e186678b395dba582419ea5bbb
+  HSR0015-Body-070  (person HSR0015)
+      data/HSR0015/HSR0015-Body-070/scans/HSR0015-Body-070-Scan-LOD0.zip
+      sha256 52a8a6b2fac42a5afad85f11f5bc45488e1091f5af9588511c53ae285c459c06
+  HSR0015-Body-087  (person HSR0015)
+      data/HSR0015/HSR0015-Body-087/scans/HSR0015-Body-087-Scan-LOD0.zip
+      sha256 dc2a2972f4fefcf50e657b256cbe020a9783dc7dfc563bffaf92f6a1e13c82c1
+  HSR0023-Body-017  (person HSR0023)
+      data/HSR0023/HSR0023-Body-017/scans/HSR0023-Body-017-Scan-LOD0.zip
+      sha256 b9df93db9499fba5ad17dc2b54a332287775734291dd392de004701baba70b42
+  HSR0023-Body-029  (person HSR0023)
+      data/HSR0023/HSR0023-Body-029/scans/HSR0023-Body-029-Scan-LOD0.zip
+      sha256 0575d107918ee50c527967896f994eb0a34d23e73863030781f893dfa730af31
+  HSR0023-Body-042  (person HSR0023)
+      data/HSR0023/HSR0023-Body-042/scans/HSR0023-Body-042-Scan-LOD0.zip
+      sha256 9fe1a20a79de31f4910658d8ebf4bd00788d5e4dbc27aba00d1570f3b6fa5760
+  HSR0023-Body-046  (person HSR0023)
+      data/HSR0023/HSR0023-Body-046/scans/HSR0023-Body-046-Scan-LOD0.zip
+      sha256 188c01117ddd36eed6d624abafdeb30b2ab95e32993c5c52b89d297ac917beac
+  HSR0023-Body-052  (person HSR0023)
+      data/HSR0023/HSR0023-Body-052/scans/HSR0023-Body-052-Scan-LOD0.zip
+      sha256 74aa6a1c899011b8826aa88db75b9cf441e0bfb3b930fd76c621af34fd58a74d
+  HSR0023-Body-053  (person HSR0023)
+      data/HSR0023/HSR0023-Body-053/scans/HSR0023-Body-053-Scan-LOD0.zip
+      sha256 85ea54db3f2843a6cb76d36d83859c4f20980e40dc3254089d58e72577c3dc9a
+  HSR0023-Body-054  (person HSR0023)
+      data/HSR0023/HSR0023-Body-054/scans/HSR0023-Body-054-Scan-LOD0.zip
+      sha256 3a13ae29ef1763f44008288cd8fe5b8f4caab9f232e1bf087498a287d6986620
+  HSR0023-Body-060  (person HSR0023)
+      data/HSR0023/HSR0023-Body-060/scans/HSR0023-Body-060-Scan-LOD0.zip
+      sha256 99560767b0d28f67009f9ae6e3c465bd2478d4e6debe88a6eb9245ffd600a135
+  HSR0023-Body-071  (person HSR0023)
+      data/HSR0023/HSR0023-Body-071/scans/HSR0023-Body-071-Scan-LOD0.zip
+      sha256 7f73da7612d5c62fb334fd56301368115bd25774ebea8cf486d809385b402a36
+  HSR0023-Body-077  (person HSR0023)
+      data/HSR0023/HSR0023-Body-077/scans/HSR0023-Body-077-Scan-LOD0.zip
+      sha256 ea645840f8ce27e01acc3e5eca41be66e30531acc341ad88649313e88f8bc256
+  HSR0027-Body-025  (person HSR0027)
+      data/HSR0027/HSR0027-Body-025/scans/HSR0027-Body-025-Scan-LOD0.zip
+      sha256 a1cc5420827da56e2179e09f22d69dda1670ae9777f3218d6fe32559171cc7e2
+  HSR0027-Body-029  (person HSR0027)
+      data/HSR0027/HSR0027-Body-029/scans/HSR0027-Body-029-Scan-LOD0.zip
+      sha256 c814b747071a4cc97b2510dfd03534172f5ae22dda5fece4f8a94dd3014454d8
+  HSR0027-Body-039  (person HSR0027)
+      data/HSR0027/HSR0027-Body-039/scans/HSR0027-Body-039-Scan-LOD0.zip
+      sha256 b078c5c33c0b6b54343aff3c267552ba9383aeb51c5868b33632c54cadab15a1
+  HSR0027-Body-048  (person HSR0027)
+      data/HSR0027/HSR0027-Body-048/scans/HSR0027-Body-048-Scan-LOD0.zip
+      sha256 ebc90f30655679c3156255bed8fc157c65dc065031de8f4f981299467e83b893
+  HSR0027-Body-053  (person HSR0027)
+      data/HSR0027/HSR0027-Body-053/scans/HSR0027-Body-053-Scan-LOD0.zip
+      sha256 08a7139e4cb0e2ec54ec8d2d74b0bfca99dfc29a7f8f1038eeb0bb2f1a3785db
+  HSR0027-Body-068  (person HSR0027)
+      data/HSR0027/HSR0027-Body-068/scans/HSR0027-Body-068-Scan-LOD0.zip
+      sha256 f85bef439e58c8ae3390c1e9deff1d7fe351ddac18087946519dea5caeee7a39
+  HSR0028-Body-021  (person HSR0028)
+      data/HSR0028/HSR0028-Body-021/scans/HSR0028-Body-021-Scan-LOD0.zip
+      sha256 b929c8db06410c8e34ee94401755c8d801bc0c66b5b3a3d7d127f5d35ce649cc
+  HSR0028-Body-028  (person HSR0028)
+      data/HSR0028/HSR0028-Body-028/scans/HSR0028-Body-028-Scan-LOD0.zip
+      sha256 fd0a97f7af6c9a003bae890dcc03687f51dd9e2930341a7e2afd1afd39efeb2b
+  HSR0028-Body-052  (person HSR0028)
+      data/HSR0028/HSR0028-Body-052/scans/HSR0028-Body-052-Scan-LOD0.zip
+      sha256 dee519b054c71094bb9087931662825185b0654a88ec1c27510a770f7079d219
+  HSR0028-Body-053  (person HSR0028)
+      data/HSR0028/HSR0028-Body-053/scans/HSR0028-Body-053-Scan-LOD0.zip
+      sha256 7b04cb59d563a77afb34ac9277b3e3b4da4c2a93a3147b54405795f9a9fc1620
+  HSR0028-Body-055  (person HSR0028)
+      data/HSR0028/HSR0028-Body-055/scans/HSR0028-Body-055-Scan-LOD0.zip
+      sha256 c0f3c4f8a557ff52b7c698612fe796b106d2078546a32d6cf5df9cdb8d3a934d
+  HSR0028-Body-058  (person HSR0028)
+      data/HSR0028/HSR0028-Body-058/scans/HSR0028-Body-058-Scan-LOD0.zip
+      sha256 036b1ae19f7520dae8d6c8289fd197250f0442f84876b88a7ef1202321abe902
+  HSR0028-Body-062  (person HSR0028)
+      data/HSR0028/HSR0028-Body-062/scans/HSR0028-Body-062-Scan-LOD0.zip
+      sha256 4ab28160a43ef3286930b44fc36e243b0fea4c71b4d27301774a8e2f6c43a614
+  HSR0028-Body-093  (person HSR0028)
+      data/HSR0028/HSR0028-Body-093/scans/HSR0028-Body-093-Scan-LOD0.zip
+      sha256 24311cad26ebf008b48a294632d00355588deb21373d10d6efd234e3e496946e
+  HSR0040-Body-004  (person HSR0040)
+      data/HSR0040/HSR0040-Body-004/scans/HSR0040-Body-004-Scan-LOD0.zip
+      sha256 a5ea5bf1429ecc09fd52685789846ab61dd51ae19edecd5619474927044506af
+  HSR0040-Body-012  (person HSR0040)
+      data/HSR0040/HSR0040-Body-012/scans/HSR0040-Body-012-Scan-LOD0.zip
+      sha256 8fa8a999ca3c49e6eed973e2b4b09baca2b2ed3343367ac362cc90119a81bb6e
+  HSR0040-Body-023  (person HSR0040)
+      data/HSR0040/HSR0040-Body-023/scans/HSR0040-Body-023-Scan-LOD0.zip
+      sha256 3b10f004b4c0fca9f7bc2c1fe191c58736b42a088ee0a366f71d3169eafcde80
+  HSR0040-Body-027  (person HSR0040)
+      data/HSR0040/HSR0040-Body-027/scans/HSR0040-Body-027-Scan-LOD0.zip
+      sha256 28603f9d6d00a37a6498e25178545922ea151f6388faf14d28feaa480f1c0912
+  HSR0040-Body-032  (person HSR0040)
+      data/HSR0040/HSR0040-Body-032/scans/HSR0040-Body-032-Scan-LOD0.zip
+      sha256 a63becc608b6247a5819380c1d7f508bbf3e49c0f46ab6700fff8275481b7f78
+  HSR0040-Body-037  (person HSR0040)
+      data/HSR0040/HSR0040-Body-037/scans/HSR0040-Body-037-Scan-LOD0.zip
+      sha256 b32826a65547f9000fec66c86f317b6987084936b29889e14b6b87388f999ae2
+  HSR0040-Body-039  (person HSR0040)
+      data/HSR0040/HSR0040-Body-039/scans/HSR0040-Body-039-Scan-LOD0.zip
+      sha256 dafd8693e3bf70ad8d5a00777cb71e454f035904f090923ca6c4ea59c33c08d9
+  HSR0040-Body-074  (person HSR0040)
+      data/HSR0040/HSR0040-Body-074/scans/HSR0040-Body-074-Scan-LOD0.zip
+      sha256 acaefeefd4f7020e89fb944176cc5883f9580d26af9d0c5d190ac81009baedc2
+  HSR0040-Body-086  (person HSR0040)
+      data/HSR0040/HSR0040-Body-086/scans/HSR0040-Body-086-Scan-LOD0.zip
+      sha256 547ceb0085aa3f577bcdb4a90e46b2868f562848ef16de0a9889a3b4971efbea
+  HSR0042-Body-014  (person HSR0042)
+      data/HSR0042/HSR0042-Body-014/scans/HSR0042-Body-014-Scan-LOD0.zip
+      sha256 4dfeef27b45d6cd8805b9459080354a3f9bcf1343977e76580ff96ebdbd3746f
+  HSR0042-Body-018  (person HSR0042)
+      data/HSR0042/HSR0042-Body-018/scans/HSR0042-Body-018-Scan-LOD0.zip
+      sha256 bd0fdfe6f30beef79542de5a4f6702257cf52d8db85b58a44b959f45e146c8a8
+  HSR0042-Body-043  (person HSR0042)
+      data/HSR0042/HSR0042-Body-043/scans/HSR0042-Body-043-Scan-LOD0.zip
+      sha256 544c0bc39cf4157c58654278b06394ac97bf8f778aaa48204f7f707530f02eb9
+  HSR0081-Body-014  (person HSR0081)
+      data/HSR0081/HSR0081-Body-014/scans/HSR0081-Body-014-Scan-LOD0.zip
+      sha256 29fd06567b4beded5c65e5ac357010e4196245592f32a36dcc11aa4d13d5ad8c
+  HSR0081-Body-020  (person HSR0081)
+      data/HSR0081/HSR0081-Body-020/scans/HSR0081-Body-020-Scan-LOD0.zip
+      sha256 647c33c8395b47cf5f2a67e81582ddce523b86d00e167ad3ef3b7cbe4928444e
+  HSR0081-Body-033  (person HSR0081)
+      data/HSR0081/HSR0081-Body-033/scans/HSR0081-Body-033-Scan-LOD0.zip
+      sha256 fb8755edcb70a82a5df53d0cf5ede56fac59c0ffc34276d1a7f7ff7bedec4101
+  HSR0081-Body-034  (person HSR0081)
+      data/HSR0081/HSR0081-Body-034/scans/HSR0081-Body-034-Scan-LOD0.zip
+      sha256 5af2c2858af65663f38ceb4e5b56439c451a688845a75107742ce4ea47911725
+  HSR0081-Body-050  (person HSR0081)
+      data/HSR0081/HSR0081-Body-050/scans/HSR0081-Body-050-Scan-LOD0.zip
+      sha256 e4f6ddb21b164dc2794eb7525ecfcc8c9e9b03e40e865d936201ee70fa60a467
+  HSR0081-Body-054  (person HSR0081)
+      data/HSR0081/HSR0081-Body-054/scans/HSR0081-Body-054-Scan-LOD0.zip
+      sha256 7b83a44e9310e9cf2a19be0ada7ce1bc2ac1bba6b1413e72861811895f84cb9a
+  HSR0081-Body-074  (person HSR0081)
+      data/HSR0081/HSR0081-Body-074/scans/HSR0081-Body-074-Scan-LOD0.zip
+      sha256 1c55bc0cec23583c1fb9dff9a6f449e6ccd582d6d5503a6dddc5aa868c8f45cd
+  HSR0102-Body-019  (person HSR0102)
+      data/HSR0102/HSR0102-Body-019/scans/HSR0102-Body-019-Scan-LOD0.zip
+      sha256 20cdd8cc17bcd94863ed1a670b6a0ede56198069fc5ae31a46e6d511ab665383
+  HSR0102-Body-020  (person HSR0102)
+      data/HSR0102/HSR0102-Body-020/scans/HSR0102-Body-020-Scan-LOD0.zip
+      sha256 2b55963ed9e203443ae979328893e9f7ef71fa8568778af205836bcd0a41021e
+  HSR0102-Body-022  (person HSR0102)
+      data/HSR0102/HSR0102-Body-022/scans/HSR0102-Body-022-Scan-LOD0.zip
+      sha256 d46a46ade0322a646323905fe2ff6b5a0412e8cc388210dd911bbb15d696094f
+  HSR0102-Body-034  (person HSR0102)
+      data/HSR0102/HSR0102-Body-034/scans/HSR0102-Body-034-Scan-LOD0.zip
+      sha256 c76f0138a32ffdde018a3b76ccefc836b8fa8cb45bc6897d547220764b81e538
+  HSR0102-Body-040  (person HSR0102)
+      data/HSR0102/HSR0102-Body-040/scans/HSR0102-Body-040-Scan-LOD0.zip
+      sha256 109154f88d6f5085a73bc5d0bb7f6dfcd0b1d71883253a38496f0e5350aafbea
+  HSR0102-Body-042  (person HSR0102)
+      data/HSR0102/HSR0102-Body-042/scans/HSR0102-Body-042-Scan-LOD0.zip
+      sha256 b1edb28d5f6e3eadc5e28bdf46cc184ee15f6e19f2489c55ff5ae15c29518078
+  HSR0102-Body-043  (person HSR0102)
+      data/HSR0102/HSR0102-Body-043/scans/HSR0102-Body-043-Scan-LOD0.zip
+      sha256 2ee648d2071b3a9fe1585dd6e1f2b4f52aed974a573c0c7995f10a7132e493b6
+  HSR0102-Body-048  (person HSR0102)
+      data/HSR0102/HSR0102-Body-048/scans/HSR0102-Body-048-Scan-LOD0.zip
+      sha256 e638b0c4fd64165c197ef044daf88be875454255ef580dd2cb67890a0ad1b7f1
+  HSR0102-Body-052  (person HSR0102)
+      data/HSR0102/HSR0102-Body-052/scans/HSR0102-Body-052-Scan-LOD0.zip
+      sha256 b24e0d3bb5255d96f622eba3379ed8b59efd98cdabc0c47da47cca3a54d3b7a5
+  HSR0112-Body-007  (person HSR0112)
+      data/HSR0112/HSR0112-Body-007/scans/HSR0112-Body-007-Scan-LOD0.zip
+      sha256 9a49ed31e9315dc36c20327a08aa27efdb676f7b713cf86c1865bfcaba88b958
+  HSR0112-Body-018  (person HSR0112)
+      data/HSR0112/HSR0112-Body-018/scans/HSR0112-Body-018-Scan-LOD0.zip
+      sha256 a8d8f86d8763c4377071b5478495fc449ca1848e1113acf5b7527ec12356dcf1
+  HSR0112-Body-023  (person HSR0112)
+      data/HSR0112/HSR0112-Body-023/scans/HSR0112-Body-023-Scan-LOD0.zip
+      sha256 9fcd9c4b08f2b5b350bb55af3575a9f6fca5586a5b5b791b13eb8ee510c0a1cc
+  HSR0112-Body-036  (person HSR0112)
+      data/HSR0112/HSR0112-Body-036/scans/HSR0112-Body-036-Scan-LOD0.zip
+      sha256 93fd4239f514c80fc760157b70a983dbe588899a728ff1431fcc3f6ec7e03e2f
+  HSR0112-Body-044  (person HSR0112)
+      data/HSR0112/HSR0112-Body-044/scans/HSR0112-Body-044-Scan-LOD0.zip
+      sha256 a9f77daa69087eca8493b243134a9dacac9cd39ebe36576daf310565672c885c
+  HSR0112-Body-045  (person HSR0112)
+      data/HSR0112/HSR0112-Body-045/scans/HSR0112-Body-045-Scan-LOD0.zip
+      sha256 db7c8ab6c0c80e0d18fe38b1df7f3d9eb75bdc2ee5e9b74ef4f0e0640bca27af
+  HSR0112-Body-062  (person HSR0112)
+      data/HSR0112/HSR0112-Body-062/scans/HSR0112-Body-062-Scan-LOD0.zip
+      sha256 0cf1eafc337ff66da0891c6c6ff5202c4c92365f00587ae5dad530f08977b2e7
+  HSR0112-Body-065  (person HSR0112)
+      data/HSR0112/HSR0112-Body-065/scans/HSR0112-Body-065-Scan-LOD0.zip
+      sha256 ac16aec09bd8d98b6a16bcd10ee4ff2396d46d289fbf4775bdfaf1bcf092d51d
+  HSR0112-Body-074  (person HSR0112)
+      data/HSR0112/HSR0112-Body-074/scans/HSR0112-Body-074-Scan-LOD0.zip
+      sha256 60fce0364753bd2e53da8ef3105c3fae637c9720381485cc0b17fc2d4ac75ac9
+
+작성: 2026-11-11T06:22:02+00:00  (pipeline 0.1.0)

@@ -1,0 +1,205 @@
+{
+  "schema": "hsrd_head.model_config/1",
+  "pose_id": "HSR0081-Body-074",
+  "person_id": "HSR0081",
+  "_help": {
+    "up_source": "위쪽 방향. OBJ 원본 좌표의 벡터(예: [0,0,1]).",
+    "front_source": "사람이 바라보는 정면 방향. OBJ 원본 좌표의 벡터. 위 방향 성분은 자동으로 제거된다.",
+    "head_center_source": "머리 중심(OBJ 원본 좌표). 정렬 후 원점이 되고 15개 카메라가 모두 이 점을 바라본다.",
+    "head_roi_aligned": "머리 ROI 상자. 정렬 좌표(+X=사람의 왼쪽, +Y=뒤통수 쪽, +Z=위)에서 머리 중심 기준 min/max. 긴 머리는 z 의 min 을 더 내려 모발 끝까지 포함시킨다.",
+    "alignment.matrix_override": "source→aligned 4x4(열벡터 규약)를 직접 지정할 때만 사용. 반사·스케일 불가. 보통 null.",
+    "crop": "enabled=true 이면 '복제한' 메시에서 keep_above_z(정렬 좌표 z) 아래를 잘라낸다. keep_above_z 는 숫자 또는 \"auto\"(고도각 0° 화면의 아래 경계보다 낮은 높이로 자동 계산). extra_planes 는 [{point:[x,y,z], normal:[x,y,z]}] 로 normal 쪽을 남긴다. 원본 파일은 바뀌지 않는다.",
+    "camera_distance": "mode='auto' 이면 ROI 상자의 꼭짓점 8개가 15개 시점 모두에서 여백 안에 들어오는 최소 거리. mode='manual' 이면 value 를 그대로 쓴다.",
+    "review": "미리보기를 보고 방향·영역이 맞으면 approved=true 로 바꾼다(또는 run.py approve).",
+    "qa_overrides": "allow_front_mismatch=true 이면 '수평각 0° 가 얼굴 정면인가' 자동 검사를 경고로 낮춘다(얼굴이 아닌 몸의 정면을 기준으로 삼는 등 의도적으로 다르게 둘 때만)."
+  },
+  "up_source": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "front_source": [
+    0.157727,
+    0.987483,
+    0.0
+  ],
+  "head_center_source": [
+    -0.06448,
+    -0.09452,
+    1.63481
+  ],
+  "alignment": {
+    "matrix_override": null
+  },
+  "head_roi_aligned": {
+    "min": [
+      -0.16,
+      -0.152,
+      -0.52
+    ],
+    "max": [
+      0.16,
+      0.24,
+      0.1414
+    ]
+  },
+  "crop": {
+    "enabled": true,
+    "keep_above_z": "auto",
+    "extra_planes": []
+  },
+  "camera_distance": {
+    "mode": "auto",
+    "value": null
+  },
+  "review": {
+    "approved": true,
+    "reviewer": "Claude(AI) - 요약 몽타주 육안 확인",
+    "reviewed_at": "2026-11-11T05:47:59+00:00",
+    "notes": "요약 몽타주(정면·왼쪽·뒤·위·전신 옆 보기에 ROI 상자·중심선·높이 눈금 표시)로 확인: 정면 보기에서 얼굴이 정면이고 ROI 상자가 모발 전체·귀·목·어깨선을 포함. 사람별 세부 사항과 수정 내역은 work/_review/review_log.md 및 review.edit_notes 참고. 축소 그림 기준의 확인이므로 사람(연구자)의 재확인 권장.",
+    "edit_notes": "[2026-11-11] 긴 포니테일 끝(z≈-0.45)까지 ROI 확장, crop 사용"
+  },
+  "qa_overrides": {
+    "allow_front_mismatch": false
+  },
+  "auto_estimate": {
+    "status": "ok",
+    "method": "얼굴 중앙부 형상의 좌우 대칭면(초기값: 여러 시점의 얼굴 랜드마크 좌우 대칭 맞춤(tan 모델))",
+    "stage_used": "head",
+    "message": null,
+    "flags": [
+      "머리 범위 측정이 탐색 반경 한계에 닿음 → 모발이 크거나 머리 가까이에 손·팔·물건이 있을 수 있음. ROI 를 미리보기로 확인하고 필요하면 넓힐 것"
+    ],
+    "front_azimuth_survey_deg": 170.9250000000303,
+    "front_azimuth_from_landmark_fit_deg": 170.3000000000303,
+    "front_azimuth_from_eye_line_deg": 169.39071614505056,
+    "front_azimuth_from_symmetry": {
+      "front_azimuth_deg": 170.9250000000303,
+      "correction_from_initial_deg": 0.625,
+      "head_roll_deg": 0.5,
+      "symmetry_plane_up": [
+        0.008617303029564777,
+        -0.0013764121116272333,
+        0.9999619230641713
+      ],
+      "mean_asymmetry_over_ipd": 0.009064470245424044,
+      "sharpness_cost_ratio_at_4deg": 2.5491625481934976,
+      "points_used": 9999,
+      "valid": true
+    },
+    "suggested_up_source_to_remove_head_roll": [
+      0.008617303029564777,
+      -0.0013764121116272333,
+      0.9999619230641713
+    ],
+    "front_estimates_disagreement_deg": 1.5342838549797477,
+    "face_plane_tilt_deg_rough": 3.0288513063081566,
+    "ipd_source_units": 0.0647694839376935,
+    "measurements_in_ipd": {
+      "head_width_incl_hair_ears": 2.7191350881806837,
+      "head_depth_incl_hair_nose": 4.094605083245548,
+      "eye_to_top": 2.0429555844602048,
+      "eye_to_mouth": 0.9738930843604097,
+      "eye_to_mouth_rule": "입꼬리 랜드마크",
+      "mouth_to_chin_assumed": 0.75,
+      "chin_to_roi_bottom_assumed": 1.25
+    },
+    "scale_hint": {
+      "bbox_extent_along_up_source_units": 1.7568011991679597,
+      "upstream_metadata_height_cm": 175.0,
+      "source_units_per_metadata_cm": 0.010038863995245484,
+      "note": "단위는 공식 문서에 없다. 메타데이터의 키(cm)와 bbox 높이(신발·머리카락 포함)의 비는 참고용 단서일 뿐이다."
+    },
+    "estimated_at": "2026-11-11T05:21:00+00:00",
+    "sheets": {
+      "body": "work/HSR0081/HSR0081-Body-074/analysis/survey_sheet.jpg",
+      "head": "work/HSR0081/HSR0081-Body-074/analysis/head_survey_sheet.jpg"
+    },
+    "manual_input": null,
+    "note": "자동 추정 기록(참고용). 위의 실제 설정값을 고쳐도 이 기록은 바뀌지 않는다."
+  },
+  "resolved": {
+    "source_to_aligned": [
+      [
+        -0.987482762106544,
+        0.15772696200215988,
+        0.0,
+        -0.048764536052185795
+      ],
+      [
+        -0.15772696200215988,
+        -0.987482762106544,
+        -0.0,
+        -0.1035071051842098
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -1.63481
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "source_to_aligned_convention": "X_aligned = M[:3,:3] @ X_source + M[:3,3]  (열벡터, 스케일 없음)",
+    "alignment_source": "head_center_source / up_source / front_source 에서 계산",
+    "alignment_check": {
+      "orthonormality_error": 2.220446049250313e-16,
+      "determinant": 1.0,
+      "is_rigid": true,
+      "is_reflection": false
+    },
+    "head_roi_aligned": {
+      "min": [
+        -0.16,
+        -0.152,
+        -0.52
+      ],
+      "max": [
+        0.16,
+        0.24,
+        0.1414
+      ]
+    },
+    "crop": {
+      "enabled": true,
+      "keep_above_z": -0.9873329315805583,
+      "keep_above_z_rule": "auto: -(1.25 × r × tan(세로화각/2)) — 고도각 0° 화면의 아래 경계보다 낮은 높이",
+      "planes_aligned": [
+        {
+          "point": [
+            0.0,
+            0.0,
+            -0.9873329315805583
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "planes_defined_but_unused": []
+    },
+    "camera_distance": 1.6276049610009116,
+    "camera_distance_source": "auto(ROI 상자 꼭짓점 8개 × 15개 시점, 여백 포함)",
+    "camera_distance_auto_fit": {
+      "distance": 1.6276049610009116,
+      "binding_view": "az144_el00",
+      "binding_axis": "vertical",
+      "binding_point": [
+        0.16,
+        0.24,
+        -0.52
+      ],
+      "margin_fraction": 0.1
+    },
+    "azimuth_sign": 1,
+    "resolved_at": "2026-11-11T06:18:51+00:00"
+  },
+  "render_relevant_fingerprint": "3dee83b07f67c65b26d17e52185bcbd4a2e316aefe638f8a0c5069dcb2d76f9c"
+}
